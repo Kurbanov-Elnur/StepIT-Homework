@@ -4,6 +4,7 @@ void printBook(book** books)
 {
 	for (size_t i = 0; books[i] != nullptr; i++)
 	{
+		cout << "Book number " << i + 1 << ":" << endl;
 		books[i]->print();
 	}
 }
@@ -47,7 +48,7 @@ void searchBookName(book** books)
 				yes++;
 		}
 		if (yes == len)
-			cout << "Book numbered: " << i + 1;
+			cout << "Book numbered: " << i + 1 << endl;
 	}
 }
 
@@ -85,6 +86,58 @@ void sortName(book** books)
 				char* r = books[i]->name;
 				books[i]->name = books[j]->name;
 				books[j]->name = r;
+				r = books[i]->author;
+				books[i]->author = books[j]->author;
+				books[j]->author = r;
+				r = books[i]->publishing;
+				books[i]->publishing = books[j]->publishing;
+				books[j]->publishing = r;
+			}
+		}
+	}
+	printBook(books);
+}
+
+void sortAuthor(book** books)
+{
+	for (size_t i = 0; books[i] != nullptr; i++)
+	{
+		for (size_t j = 0; books[j] != nullptr; j++)
+		{
+			if ((int)books[i]->author[0] < (int)books[j]->author[0])
+			{
+				char* r = books[i]->name;
+				books[i]->name = books[j]->name;
+				books[j]->name = r;
+				r = books[i]->author;
+				books[i]->author = books[j]->author;
+				books[j]->author = r;
+				r = books[i]->publishing;
+				books[i]->publishing = books[j]->publishing;
+				books[j]->publishing = r;
+			}
+		}
+	}
+	printBook(books);
+}
+
+void sortPublishing(book** books)
+{
+	for (size_t i = 0; books[i] != nullptr; i++)
+	{
+		for (size_t j = 0; books[j] != nullptr; j++)
+		{
+			if ((int)books[i]->publishing[0] < (int)books[j]->publishing[0])
+			{
+				char* r = books[i]->name;
+				books[i]->name = books[j]->name;
+				books[j]->name = r;
+				r = books[i]->author;
+				books[i]->author = books[j]->author;
+				books[j]->author = r;
+				r = books[i]->publishing;
+				books[i]->publishing = books[j]->publishing;
+				books[j]->publishing = r;
 			}
 		}
 	}

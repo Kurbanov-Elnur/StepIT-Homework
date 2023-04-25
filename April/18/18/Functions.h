@@ -23,8 +23,9 @@ struct book
 			<< "1: Name" << endl
 			<< "2: Author" << endl
 			<< "3: Publishing" << endl
-			<< "4: All";
+			<< "4: All" << endl;
 		cin >> select;
+		getchar();
 
 		switch (select)
 		{
@@ -58,3 +59,5 @@ book* createBook(int count);
 void searchBookName(book** books);
 void searchBookAuthor(book** books);
 void sortName(book** books);
+void sortAuthor(book** books);
+void sortPublishing(book** books);
