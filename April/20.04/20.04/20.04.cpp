@@ -5,9 +5,9 @@ uint16_t ccount{};
 
 struct Student
 {
-	char* name = new char[11];
-	char* surname = new char[11];
-	char* patronymic = new char[11];
+	char* name = new char[21];
+	char* surname = new char[21];
+	char* patronymic = new char[21];
 	int grades[10]{};
 
 	void printInfo()
@@ -36,7 +36,7 @@ struct Student
 
 struct Students
 {
-	//char* name = new char[11];
+	char* name = new char[21];
 	uint16_t capacity{ 20 };
 	Student* students{};
 
@@ -46,9 +46,10 @@ struct Students
 		{
 			Student* s = new Student{};
 
-			cout << "Enter student name: "; cin.getline(s->name, 10);
-			cout << "Enter student surname: "; cin.getline(s->surname, 10);
-			cout << "Enter student surname: "; cin.getline(s->patronymic, 10);
+			getchar();
+			cout << "Enter student name: "; cin.getline(s->name, 20);
+			cout << "Enter student surname: "; cin.getline(s->surname, 20);
+			cout << "Enter student surname: "; cin.getline(s->patronymic, 20);
 
 			students[ccount] = *s;
 			ccount++;
@@ -64,23 +65,31 @@ struct Students
 				cout << "Enter grades " << i + 1 << ":"; cin >> students->grades[i];
 			}
 	}
+
+	void printStudents()
+	{
+		for (size_t i = 0; i < ccount; i++)
+		{
+			cout << i + 1 << students[i].name << endl;
+		}
+	}
+
+	void printInfoStudents()
+	{
+		for (size_t i = 0; i < ccount; i++)
+		{
+			students[i].printInfo();
+		}
+	}
 };
 
 void createStudents(Students* &s)
 {
 	s = new Students{};
 
-	//cout << "Enter name: "; cin.getline(s->name, 10);
+	cout << "Enter name: "; cin.getline(s->name, 20);
 
 	s->students = new Student[s->capacity];
-}
-
-void printStudents(Students* students)
-{
-	for (size_t i = 0; i < ccount; i++)
-	{
-		cout << i + 1 << name << endl;
-	}
 }
 
 int main()
@@ -96,26 +105,28 @@ int main()
 			<< "2. Rate" << endl
 			<< "3. Displaying a list of students" << endl
 			<< "4. Printing student grades" << endl;
-			//<< "5. "
 		cin >> choice;
 
 		switch (choice)
 		{
 			case 1:
-				getchar();
 				students->createStudent();
 				break;
 			case 2:
-				printStudents(students);
+				system("cls");
+				students->printStudents();
 				cin >> choice;
 				students[choice].addGrades();
 				break;
 			case 3:
-				printStudents(students);
-			//case 4:
-			//	printStudents(students);
-			//	cin >> choice;
-			//	students[choice].;
+				system("cls");
+				students->printStudents();
+				break;
+			case 4:
+				system("cls");
+				students->printStudents();
+				cin >> choice;
+				students[choice].printInfoStudents();
 				break;
 		}
 	}
