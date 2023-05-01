@@ -23,6 +23,7 @@ struct Academy
 	void addStudent()
 	{
 		Student* s = new Student{};
+		getchar();
 
 		cout << "Enter name: "; cin.getline(s->name, 30);
 		cout << "Enter surname: "; cin.getline(s->surname, 30);
@@ -49,11 +50,11 @@ struct Academy
 				break;
 			case 3:
 				Journalism[c[2]] = *s;
-				c[3]++;
+				c[2]++;
 				break;
 			case 4:
 				Law[c[3]] = *s;
-				c[4]++;
+				c[3]++;
 			default:
 				break;
 		}
@@ -111,63 +112,66 @@ struct Academy
 
 		getchar();
 
-		switch (switch_on)
+		switch (facult)
 		{
-		default:
-			break;
-		}
-		int index = choice - 1;
-		for (int i = choice - 1; i < ; ++i)
-		{
-			if (animals[i].animalName == nullptr)
+			case 1:
+				for (int i = choice - 1; i < c[0] - 1; ++i)
+				{
+					IT[i].name = IT[i + 1].name;
+					IT[i].surname = IT[i + 1].surname;
+					IT[i].faculty = IT[i + 1].faculty;
+					IT[i].age = IT[i + 1].age;
+					IT[i].average = IT[i + 1].average;
+					IT[i].course = IT[i + 1].course;
+				}
+				c[0]--;
 				break;
-
-			index++;
-			animals[i].animalName = animals[i + 1].animalName;
-			animals[i].animalGender = animals[i + 1].animalGender;
-			animals[i].age = animals[i + 1].age;
-
+			default:
+				break;
 		}
-		animals[index].animalName = nullptr;
-		animals[index].animalGender = nullptr;
-		animals[index].age = 0;
-		countAnimals--;
 
 	}
 };
 
-void createAcademy(Academy* a)
+void createAcademy(Academy* &a)
 {
 	cout << "Enter name: "; cin.getline(a->name, 30);
 }
 
 int main()
 {
-	Academy* UNEC{};
+	Academy* UNEC = new Academy{};
 	createAcademy(UNEC);
 
-	int choice{};
-
-	cout
-		<< "1. Add Student" << endl
-		<< "2. Delete Student" << endl
-		<< "3. Show Faculty student" << endl;
-
-	switch (choice)
+	while (true)
 	{
-        case 1: 
-			system("cls");
-			UNEC->addStudent();
-			break;
-		case 2:
-			system("cls");
-			UNEC->printStud();
-			break;
-		case 3: 
-			system("cls");
-			UNEC->deleteStudent(UNEC->printStud());
-			break;
-		default:
-			break;
+		int choice{};
+
+		cout
+			<< "1. Add Student" << endl
+			<< "2. Delete Student" << endl
+			<< "3. Show Faculty student" << endl;
+		cin >> choice;
+
+
+		switch (choice)
+		{
+			case 1: 
+				system("cls");
+				UNEC->addStudent();
+				break;
+			case 2: 
+				system("cls");
+				UNEC->deleteStudent(UNEC->printStud());
+				break;
+			case 3:
+				system("cls");
+				UNEC->printStud();
+				break;
+			default:
+				break;
+		}
 	}
+
+	return 0;
 }
