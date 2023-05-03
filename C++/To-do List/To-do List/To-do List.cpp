@@ -6,6 +6,10 @@ int main()
 	int choice{};
 	while (true)
 	{
+		cout
+			<< "Enter your choice: " << endl
+			<< "1. Add" << endl
+			<< "2. Delete" << endl;
 		examination(choice);
 
 		switch (choice)
@@ -18,6 +22,11 @@ int main()
 				system("cls");
 				showAll(Lists);
 				deleteList(Lists);
+				break;
+			case 3:
+				system("cls");
+				showAll(Lists);
+				editList(Lists);
 				break;
 			default:
 				break;

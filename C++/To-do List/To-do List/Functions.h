@@ -15,3 +15,4 @@ void addList(list*& Lists);
 void showAll(list* Lists);
 void deleteList(list*& Lists);
 void examination(int &obyekt);
+void editList(list*& Lists);
