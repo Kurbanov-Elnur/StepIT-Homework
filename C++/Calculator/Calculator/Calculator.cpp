@@ -1,20 +1,79 @@
-// Calculator.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
+
+void examination(int& obyekt)
+{
+	char vvod[101]{};
+	cin >> vvod;
+
+	while ((int)vvod[0] < 47 || (int)vvod[0] > 58)
+	{
+		cout << "Please enter a number: "; cin >> vvod;
+	}
+
+	obyekt = (int)vvod[0] - (int)'0';
+	if (((int)vvod[1] > 47 && (int)vvod[1] < 58))
+	{
+		obyekt *= 10;
+		obyekt += (int)vvod[1] - (int)'0';
+	}
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	char calculator[101] {};
+	int res{};
+
+	cout << "Enter example: "; cin.getline(calculator, 100);
+	
+	int num{};
+	for (size_t i = 0; calculator[i] != '\0';)
+	{
+		while ((int)calculator[i] > 47 && (int)calculator[i] < 58)
+		{
+			num += (int)calculator[i] - (int)'0';
+			if ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
+			{
+				num *= 10;
+			}
+			i++;
+		}
+		if (calculator[i] == '+')
+		{
+			while ((int)calculator[i] < 47 || (int)calculator[i] > 58)
+				i++;
+			res += num;
+			num = 0;
+			while ((int)calculator[i] > 47 && (int)calculator[i] < 58)
+			{
+				num += (int)calculator[i] - (int)'0';
+				if ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
+				{
+					num *= 10;
+				}
+				i++;
+			}
+			res += num;
+			continue;
+		}
+		else if (calculator[i] == '-')
+		{
+			while ((int)calculator[i] < 47 || (int)calculator[i] > 58)
+				i++;
+			num = 0;
+			while ((int)calculator[i] > 47 && (int)calculator[i] < 58)
+			{
+				num += (int)calculator[i] - (int)'0';
+				if ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
+				{
+					num *= 10;
+				}
+				i++;
+			}
+			res -= num;
+			continue;
+		}
+		i++;
+	}
+		cout << res << endl;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
