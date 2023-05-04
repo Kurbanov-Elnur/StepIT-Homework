@@ -5,7 +5,7 @@ void addList(list*& Lists)
 {
 	getchar();
 
-	cout << "Enter name: "; cin.getline(Lists[Lists->count].name, 100);
+	cout << "Enter name: "; cin.getline(Lists[Lists->count].name, 30);
 	cout << "Enter priority: "; cin.getline(Lists[Lists->count].priority, 30);
 	cout << "Enter description: "; cin.getline(Lists[Lists->count].description, 1000);
 
@@ -26,7 +26,6 @@ void showAll(list* Lists)
 	for (size_t i = 0; i < Lists->count; i++)
 	{
 		cout << i + 1 << ": " << Lists[i].name << endl;
-		cout << Lists[i].addDate[0] << endl;
 	}
 }
 
@@ -91,3 +90,28 @@ void editList(list*& Lists)
 	cout << "Enter new execution time: ";
 	examination(Lists[c].executionTime);
 }
+
+void searchName(list* Lists)
+{
+		char search[31]{};
+		int len{};
+
+		getchar();
+		cout << "Enter name: "; cin.getline(search, 30);
+
+		while (search[len] != '\0')
+			len++;
+
+		for (size_t i = 0; i < Lists->count; i++)
+		{
+			int yes{};
+			for (size_t j = 0; j < len; j++)
+			{
+				if (Lists[i].name[j] == search[j])
+					yes++;
+			}
+			if (yes == len)
+				cout << "Case numbered: " << i + 1 << endl;
+		}
+}
+

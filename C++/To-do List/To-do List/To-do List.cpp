@@ -28,6 +28,10 @@ int main()
 				showAll(Lists);
 				editList(Lists);
 				break;
+			case 4:
+				system("cls");
+				searchName(Lists);
+				break;
 			default:
 				break;
 		}
