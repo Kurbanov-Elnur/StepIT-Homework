@@ -32,6 +32,10 @@ int main()
 				system("cls");
 				searchName(Lists);
 				break;
+			case 5:
+				system("cls");
+				createTXT(Lists);
+				break;
 			default:
 				break;
 		}

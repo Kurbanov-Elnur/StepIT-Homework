@@ -17,3 +17,4 @@ void deleteList(list*& Lists);
 void examination(int &obyekt);
 void editList(list*& Lists);
 void searchName(list* Lists);
+void createTXT(list* Lists);

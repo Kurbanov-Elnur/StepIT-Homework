@@ -21,6 +21,35 @@ void addList(list*& Lists)
 	Lists->count++;
 }
 
+void createTXT(list* Lists)
+{
+
+	char* fileName = new char[34]{};
+	char* extension = new char[] {".txt"};
+	
+	int i{};
+	while (Lists[1].name[i] != '\0')
+	{
+		fileName[i] = Lists[1].name[i];
+		i++;
+	}
+
+	for (size_t j = 0; extension[j] != '\0'; j++)
+	{
+		fileName[i] = extension[j];
+		i++;
+	}
+
+	cout << fileName << endl;
+
+
+	FILE* file{};
+
+	fopen_s(&file, fileName, "a");
+
+	//fprintf(file, "Data: %s\n", Lists->name);
+}
+
 void showAll(list* Lists)
 {
 	for (size_t i = 0; i < Lists->count; i++)
