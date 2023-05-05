@@ -1,33 +1,131 @@
 #include <iostream>
 using namespace std;
 
-void examination(int& obyekt)
+char* examination(int numbers[], char operators[])
 {
-	char vvod[101]{};
-	cin >> vvod;
-
-	while ((int)vvod[0] < 47 || (int)vvod[0] > 58)
+	char* calculator = new char[1001]{};
+	bool close = true;
+	while (close)
 	{
-		cout << "Please enter a number: "; cin >> vvod;
+		cout << "Enter example: "; cin.getline(calculator, 100);
+
+		int len{}, l1{}, l2{};
+		while (calculator[len] != '\0')
+			len++;
+
+		int i{};
+		for (i; calculator[i] != '\0'; i++)
+		{
+			if (((int)calculator[i] < 48 || (int)calculator[i] > 57) && calculator[i] != ' ' && ((int)calculator[i] < 40 || (int)calculator[i] > 47))
+					break;
+		}
+
+		if (i == len)
+			close = false;
+
+		for (size_t i = 0, j{}, v{}; calculator[i] != '\0'; i++)
+		{
+			if ((int)calculator[i] > 47 && (int)calculator[i] < 58)
+			{
+				numbers[j] = (int)calculator[i] - (int)'0';
+				while ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
+				{
+					numbers[j] *= 10;
+					i++;
+					numbers[j] += (int)calculator[i] - (int)'0';
+				}
+				j++;
+			}
+			else if ((int)calculator[i] > 41 && (int)calculator[i] < 48)
+			{
+				operators[v] = calculator[i];
+				v++;
+			}
+		}
+
+		while (numbers[l1] != '\0')
+			l1++;
+		while (operators[l2] != '\0')
+			l2++;
+
+		if (l1 == l2 || l2 > l1)
+			close = true;
+
 	}
 
-	obyekt = (int)vvod[0] - (int)'0';
-	if (((int)vvod[1] > 47 && (int)vvod[1] < 58))
-	{
-		obyekt *= 10;
-		obyekt += (int)vvod[1] - (int)'0';
-	}
+
+	return calculator;
 }
 
 int main()
 {
-	char calculator[101] {};
+	char* calculator {};
+	int numbers[200]{};
+	char operators[100]{};
 	int res{};
+	calculator = examination(numbers, operators);
 
-	cout << "Enter example: "; cin.getline(calculator, 100);
-	
-	int num{};
-	for (size_t i = 0; calculator[i] != '\0';)
+	for (size_t i = 0, j{}; operators[i] != '\0'; i++)
+	{
+		if (operators[i] == '+')
+		{
+			if (i == 0)
+			{
+				res += numbers[j];
+				if (numbers[j + 1] != '\0')
+					res += numbers[j + 1];
+				j += 2;
+			}
+			else
+			{
+				res += numbers[j];
+				j++;
+			}
+		}
+		else if (operators[i] == '-')
+		{
+			if (i == 0 && numbers[j + 1] != '\0')
+			{
+				res = numbers[0];
+				j++;
+			}
+			res -= numbers[j];
+			j++;
+		}
+		else if (operators[i] == '*')
+		{
+			if (i == 0)
+			{
+				res = numbers[j];
+				j++;
+			}
+			res *= numbers[j];
+			j++;
+		}
+		else if (operators[i] == '/')
+		{
+			if (i == 0)
+			{
+				res = numbers[j];
+				j++;
+			}
+			res /= numbers[j];
+			j++;
+		}
+	}
+
+	cout << res;
+
+}
+
+
+
+
+
+
+
+#pragma region a
+	/*for (size_t i = 0; calculator[i] != '\0';)
 	{
 		while ((int)calculator[i] > 47 && (int)calculator[i] < 58)
 		{
@@ -75,5 +173,5 @@ int main()
 		}
 		i++;
 	}
-		cout << res << endl;
-}
+		//cout << *///res << endl;
+#pragma endregion
