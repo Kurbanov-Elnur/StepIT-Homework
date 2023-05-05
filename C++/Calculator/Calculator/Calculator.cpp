@@ -5,10 +5,9 @@ char* examination(int numbers[], char operators[])
 {
 	char* calculator = new char[1001]{};
 	bool close = true;
-	while (close)
+ 	while (close)
 	{
 		cout << "Enter example: "; cin.getline(calculator, 100);
-
 		int len{}, l1{}, l2{};
 		while (calculator[len] != '\0')
 			len++;
@@ -23,22 +22,22 @@ char* examination(int numbers[], char operators[])
 		if (i == len)
 			close = false;
 
-		for (size_t i = 0, j{}, v{}; calculator[i] != '\0'; i++)
+		for (size_t a = 0, j{}, v{}; calculator[a] != '\0'; a++)
 		{
-			if ((int)calculator[i] > 47 && (int)calculator[i] < 58)
+			if ((int)calculator[a] > 47 && (int)calculator[a] < 58)
 			{
-				numbers[j] = (int)calculator[i] - (int)'0';
-				while ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
+				numbers[j] = (int)calculator[a] - (int)'0';
+				while ((int)calculator[a + 1] > 47 && (int)calculator[a + 1] < 58)
 				{
 					numbers[j] *= 10;
-					i++;
-					numbers[j] += (int)calculator[i] - (int)'0';
+					a++;
+					numbers[j] += (int)calculator[a] - (int)'0';
 				}
 				j++;
 			}
-			else if ((int)calculator[i] > 41 && (int)calculator[i] < 48)
+			else if ((int)calculator[a] > 41 && (int)calculator[a] < 48)
 			{
-				operators[v] = calculator[i];
+				operators[v] = calculator[a];
 				v++;
 			}
 		}
@@ -63,6 +62,7 @@ int main()
 	int numbers[200]{};
 	char operators[100]{};
 	int res{};
+
 	calculator = examination(numbers, operators);
 
 	for (size_t i = 0, j{}; operators[i] != '\0'; i++)
@@ -113,65 +113,7 @@ int main()
 			j++;
 		}
 	}
-
-	cout << res;
-
+	cout << "Result: " << res << endl;
+	
+	return 0;
 }
-
-
-
-
-
-
-
-#pragma region a
-	/*for (size_t i = 0; calculator[i] != '\0';)
-	{
-		while ((int)calculator[i] > 47 && (int)calculator[i] < 58)
-		{
-			num += (int)calculator[i] - (int)'0';
-			if ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
-			{
-				num *= 10;
-			}
-			i++;
-		}
-		if (calculator[i] == '+')
-		{
-			while ((int)calculator[i] < 47 || (int)calculator[i] > 58)
-				i++;
-			res += num;
-			num = 0;
-			while ((int)calculator[i] > 47 && (int)calculator[i] < 58)
-			{
-				num += (int)calculator[i] - (int)'0';
-				if ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
-				{
-					num *= 10;
-				}
-				i++;
-			}
-			res += num;
-			continue;
-		}
-		else if (calculator[i] == '-')
-		{
-			while ((int)calculator[i] < 47 || (int)calculator[i] > 58)
-				i++;
-			num = 0;
-			while ((int)calculator[i] > 47 && (int)calculator[i] < 58)
-			{
-				num += (int)calculator[i] - (int)'0';
-				if ((int)calculator[i + 1] > 47 && (int)calculator[i + 1] < 58)
-				{
-					num *= 10;
-				}
-				i++;
-			}
-			res -= num;
-			continue;
-		}
-		i++;
-	}
-		//cout << *///res << endl;
-#pragma endregion
