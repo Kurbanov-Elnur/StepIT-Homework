@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
 
-char* examination(int* &numbers, char* &operators)
+char* examination(int*& numbers, char*& operators)
 {
 	bool close = true;
-	char* calculator = new char[401]{};
- 	while (close)
+	char* calculator = new char[401] {};
+	while (close)
 	{
 		numbers = new int[200] {};
 		operators = new char[200] {};
@@ -13,7 +13,7 @@ char* examination(int* &numbers, char* &operators)
 		cout << "Enter example: "; cin.getline(calculator, 100);
 		int l1{}, l2{};
 
-		for (size_t i{}; calculator[i] != '\0'; i++)
+		for (size_t i{}; (int)calculator[i] != (int)'\0'; i++)
 		{
 			if (((int)calculator[i] < 48 || (int)calculator[i] > 57) && calculator[i] != ' ' && ((int)calculator[i] < 40 || (int)calculator[i] > 47))
 			{
@@ -22,7 +22,7 @@ char* examination(int* &numbers, char* &operators)
 		}
 		close = false;
 
-		for (size_t a = 0, j{}, v{}; calculator[a] != '\0'; a++)
+		for (size_t a = 0, j{}, v{}; (int)calculator[a] != (int)'\0'; a++)
 		{
 			if ((int)calculator[a] > 47 && (int)calculator[a] < 58)
 			{
@@ -117,7 +117,7 @@ int main()
 	bool close = true;
 	while (close)
 	{
-		char* calculator {};
+		char* calculator{};
 		int* numbers{};
 		char* operators{};
 		int res{};
@@ -152,7 +152,10 @@ int main()
 				j++;
 			}
 		}
-		cout << "Result: " << res << endl;
+		if (res == 0)
+			cout << "Result: " << numbers[0] << endl;
+		else
+			cout << "Result: " << res << endl;
 
 		cout << "Enter 0 to close: "; cin >> close;
 		cin.ignore();
