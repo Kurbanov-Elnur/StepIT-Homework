@@ -1,26 +1,26 @@
 #include <iostream>
 using namespace std;
 
-char* examination(int numbers[], char operators[])
+char* examination(int* &numbers, char* &operators)
 {
-	char* calculator = new char[1001]{};
 	bool close = true;
+	char* calculator = new char[401]{};
  	while (close)
 	{
-		cout << "Enter example: "; cin.getline(calculator, 100);
-		int len{}, l1{}, l2{};
-		while (calculator[len] != '\0')
-			len++;
+		numbers = new int[200] {};
+		operators = new char[200] {};
 
-		int i{};
-		for (i; calculator[i] != '\0'; i++)
+		cout << "Enter example: "; cin.getline(calculator, 100);
+		int l1{}, l2{};
+
+		for (size_t i{}; calculator[i] != '\0'; i++)
 		{
 			if (((int)calculator[i] < 48 || (int)calculator[i] > 57) && calculator[i] != ' ' && ((int)calculator[i] < 40 || (int)calculator[i] > 47))
-					break;
+			{
+				continue;
+			}
 		}
-
-		if (i == len)
-			close = false;
+		close = false;
 
 		for (size_t a = 0, j{}, v{}; calculator[a] != '\0'; a++)
 		{
@@ -35,13 +35,12 @@ char* examination(int numbers[], char operators[])
 				}
 				j++;
 			}
-			else if ((int)calculator[a] > 41 && (int)calculator[a] < 48)
+			else if ((int)calculator[a] > 39 && (int)calculator[a] < 48)
 			{
 				operators[v] = calculator[a];
 				v++;
 			}
 		}
-
 		while (numbers[l1] != '\0')
 			l1++;
 		while (operators[l2] != '\0')
@@ -49,71 +48,114 @@ char* examination(int numbers[], char operators[])
 
 		if (l1 == l2 || l2 > l1)
 			close = true;
+		l1 = 0, l2 = 0;
+		int z{};
+		while (operators[z] != '\0')
+		{
+			if (operators[z] == '(')
+				l1++;
+			else if (operators[z] == ')')
+				l2++;
+			z++;
+		}
+		if (l1 != l2)
+		{
+			close = true;
+			continue;
+		}
 
+		for (size_t i = 0, j{}; operators[i] != '\0'; i++)
+		{
+			if (operators[i] == '*')
+			{
+				numbers[i] = numbers[i] * numbers[i + 1];
+				if (numbers[i + 1] != '\0')
+					j = i + 1;
+				else
+					j = i;
+				while (numbers[j + 1] != '\0')
+				{
+					numbers[j] = numbers[j + 1];
+					j++;
+				}
+				j = i;
+				while (operators[j] != '\0')
+				{
+					operators[j] = operators[j + 1];
+					j++;
+				}
+				i--;
+			}
+			if (operators[i] == '/')
+			{
+				numbers[i] = numbers[i] / numbers[i + 1];
+				if (numbers[i + 1] != '\0')
+					j = i + 1;
+				else
+					j = i;
+				while (numbers[j + 1] != '\0')
+				{
+					numbers[j] = numbers[j + 1];
+					j++;
+				}
+				j = i;
+				while (operators[j] != '\0')
+				{
+					operators[j] = operators[j + 1];
+					j++;
+				}
+				i--;
+			}
+		}
 	}
-
 
 	return calculator;
 }
 
 int main()
 {
-	char* calculator {};
-	int numbers[200]{};
-	char operators[100]{};
-	int res{};
-
-	calculator = examination(numbers, operators);
-
-	for (size_t i = 0, j{}; operators[i] != '\0'; i++)
+	bool close = true;
+	while (close)
 	{
-		if (operators[i] == '+')
+		char* calculator {};
+		int* numbers{};
+		char* operators{};
+		int res{};
+
+		calculator = examination(numbers, operators);
+
+		for (size_t i = 0, j{}; operators[i] != '\0'; i++)
 		{
-			if (i == 0)
+			if (operators[i] == '+')
 			{
-				res += numbers[j];
-				if (numbers[j + 1] != '\0')
-					res += numbers[j + 1];
-				j += 2;
+				if (i == 0)
+				{
+					res += numbers[j];
+					if (numbers[j + 1] != '\0')
+						res += numbers[j + 1];
+					j += 2;
+				}
+				else
+				{
+					res += numbers[j];
+					j++;
+				}
 			}
-			else
+			else if (operators[i] == '-')
 			{
-				res += numbers[j];
+				if (i == 0 && numbers[j + 1] != '\0')
+				{
+					res = numbers[0];
+					j++;
+				}
+				res -= numbers[j];
 				j++;
 			}
 		}
-		else if (operators[i] == '-')
-		{
-			if (i == 0 && numbers[j + 1] != '\0')
-			{
-				res = numbers[0];
-				j++;
-			}
-			res -= numbers[j];
-			j++;
-		}
-		else if (operators[i] == '*')
-		{
-			if (i == 0)
-			{
-				res = numbers[j];
-				j++;
-			}
-			res *= numbers[j];
-			j++;
-		}
-		else if (operators[i] == '/')
-		{
-			if (i == 0)
-			{
-				res = numbers[j];
-				j++;
-			}
-			res /= numbers[j];
-			j++;
-		}
+		cout << "Result: " << res << endl;
+
+		cout << "Enter 0 to close: "; cin >> close;
+		cin.ignore();
 	}
-	cout << "Result: " << res << endl;
-	
 	return 0;
 }
