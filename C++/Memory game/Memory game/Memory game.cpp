@@ -87,7 +87,11 @@ int main()
 		system("cls");
 		for (size_t i = 0; i < size; i++)
 		{
-			cout << "\t* ";
+			if (field[i] > 0)
+				cout << "\t* ";
+			else
+				cout << "\t ";
+
 			if ((i + 1) % 4 == 0)
 				cout << endl;
 		}
@@ -95,20 +99,52 @@ int main()
 		int choice1 = (x *= 10) + y;
 		getClick(x, y);
 		int choice2 = (x *= 10) + y;
+		system("cls");
+		int first{}, second{};
 		for (size_t i = 0; i < size; i++)
 		{
-			if (choice1 == numbers[i]|| numbers[i] == choice2)
-				cout << "\t " << field[i];
+			if (choice1 == numbers[i])
+			{
+				if (field[i] > 0)
+				{
+					cout << "\t " << field[i];
+					first = i;
+				}
+				else
+					cout << "\t ";
+			}
+			else if (choice2 == numbers[i])
+			{
+				if (field[i] > 0)
+				{
+					cout << "\t " << field[i];
+					second = i;
+				}
+				else
+					cout << "\t ";
+			}
 			else
 			{
-				cout << "\t *";
-				if ((i + 1) % 4 == 0)
-					cout << endl;
+				if (field[i] > 0)
+					cout << "\t *";
+				else
+					cout << "\t ";
 			}
+			if ((i + 1) % 4 == 0)
+				cout << endl;
 		}
-		int a{}; 
-		cout << "fvbuysfn:";
+		if (field[second] == field[first])
+		{
+			field[second] = 0;
+			field[first] = 0;
+		}
+		//int s{};
+		//while ()
+		//	s++;
+		//if (s == 0)
+		//	stop = false;
+		char a{}; 
+		cout << "Continue:";
 		cin >> a;
-		system("cls");
 	}
 }
