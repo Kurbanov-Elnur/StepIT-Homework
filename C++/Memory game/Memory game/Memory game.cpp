@@ -73,21 +73,25 @@ int main()
 		cout << "Invalid input, re-enter: " << endl;
 		getClick(x, y);
 	}
+	while (y != 1 && y != 2)
+		getClick(x, y);
 	int size{};
 	if (y == 1)
 		size = 16;
-	else
+	else if (y == 2)
 		size = 32;
 
 	createField(field, y, size);
-	int numbers[16]{ 80, 160, 240, 320, 81, 161, 241, 321, 82, 162, 242, 322, 83, 163, 243, 323 };
+	int numbers[32]{ 80, 160, 240, 320, 81, 161, 241, 321, 82, 162, 242, 322, 83, 163, 243, 323,84, 164, 244, 324,  85, 165, 245, 325, 86, 166, 246, 326, 87, 167, 247, 327};
 	bool stop = true;
+	int time1 = time(0);
+	int move{};
 	while (stop)
 	{
 		system("cls");
 		for (size_t i = 0; i < size; i++)
 		{
-			if (field[i] > 0)
+			if (field[i] != 20)
 				cout << "\t* ";
 			else
 				cout << "\t ";
@@ -100,12 +104,12 @@ int main()
 		getClick(x, y);
 		int choice2 = (x *= 10) + y;
 		system("cls");
-		int first{}, second{};
+		int first = 50, second = 50;
 		for (size_t i = 0; i < size; i++)
 		{
 			if (choice1 == numbers[i])
 			{
-				if (field[i] > 0)
+				if (field[i] != 20)
 				{
 					cout << "\t " << field[i];
 					first = i;
@@ -115,7 +119,7 @@ int main()
 			}
 			else if (choice2 == numbers[i])
 			{
-				if (field[i] > 0)
+				if (field[i] != 20)
 				{
 					cout << "\t " << field[i];
 					second = i;
@@ -125,7 +129,7 @@ int main()
 			}
 			else
 			{
-				if (field[i] > 0)
+				if (field[i] != 20)
 					cout << "\t *";
 				else
 					cout << "\t ";
@@ -135,16 +139,30 @@ int main()
 		}
 		if (field[second] == field[first])
 		{
-			field[second] = 0;
-			field[first] = 0;
+			field[second] = 20;
+			field[first] = 20;
 		}
-		//int s{};
-		//while ()
-		//	s++;
-		//if (s == 0)
-		//	stop = false;
+		int s{};
+		for (size_t i = 0; i < size; i++)
+		{
+			if (field[i] == 20)
+				s++;
+		}
+		move++;
+		if (s == size)
+		{
+			cout << "You win!" << endl;
+			stop = false;
+			continue;
+		}
+
 		char a{}; 
 		cout << "Continue:";
 		cin >> a;
 	}
+	int time2 = time(0) - time1;
+	cout << "You did it in " << time2 << "seconds!" << endl;
+	cout << "For " << move << " moves";
+
+	return 0;
 }

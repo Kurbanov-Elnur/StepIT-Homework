@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void plusMinus(int* &numbers, char* &operators, int &i)
+void plusMinus(float* &numbers, char* &operators, int &i)
 {
 	int j{};
 	if (operators[i] == '+')
@@ -28,7 +28,7 @@ void plusMinus(int* &numbers, char* &operators, int &i)
 	i--;
 }
 
-void multidivision(int*& numbers, char*& operators, int &i)
+void multidivision(float*& numbers, char*& operators, int &i)
 {
 	int j{};
 	if (operators[i] == '*')
@@ -54,14 +54,14 @@ void multidivision(int*& numbers, char*& operators, int &i)
 	i--;
 }
 
-char* examination(int*& numbers, char*& operators)
+char* examination(float*& numbers, char*& operators)
 {
 	bool close = true;
 	char* calculator = new char[401] {};
 	char* kovicki = new char[20] {};
 	while (close)
 	{
-		numbers = new int[200] {};
+		numbers = new float[200] {};
 		operators = new char[200] {};
 
 		cout << "Enter example: "; cin.getline(calculator, 100);
@@ -171,7 +171,7 @@ int main()
 	while (close)
 	{
 		char* calculator{};
-		int* numbers{};
+		float* numbers{};
 		char* operators{};
 
 		calculator = examination(numbers, operators);
