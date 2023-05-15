@@ -3,10 +3,10 @@ using namespace std;
 
 struct list
 {
-	char* name = new char[31] {};
-	char* priority = new char[31] {};
-	char* description = new char[1001] {};
-	char* addDate = new char[5] {};
+	char* name = new char[33] {};
+	char* priority = new char[3] {};
+	char* description = new char[1003] {};
+	char* addDate = new char[10] {};
 	char* executionTime = new char[5] {};
 
 	char* tostring()
@@ -18,12 +18,11 @@ struct list
 
 	void print()
 	{
-		cout
-			<< "Name: " << name << endl
-			<< "Priority: " << priority << endl
-			<< "Description: " << description << endl
-			<< "Add Date: " << addDate << endl
-			<< "Execution time: " << executionTime << endl;
+		cout << "Name: " << name << endl;
+		cout << "Priority: " << priority << endl;
+		cout << "Description: " << description << endl;
+		cout << "Add Date: " << addDate << endl;
+		cout << "Execution Time: " << addDate << endl;
 	}
 };
 
@@ -36,42 +35,29 @@ struct lists
 
 	void savetoFile()
 	{
-		char* fileName = new char[31] {};
-		char* extension = new char[] {".txt"};
-
-		int i{};
-		while (Spisok->name[i] != '\0')
-		{
-			fileName[i] = Spisok->name[i];
-			i++;
-		}
-
-		for (size_t j = 0; extension[j] != '\0'; j++, i++)
-			fileName[i] = extension[j];
-
 		FILE* file{};
-		FILE* names{};
-		fopen_s(&names, "names.txt", "a+");
-		fopen_s(&file, fileName, "w");
+		fopen_s(&file, "lists.txt", "a+");
 
-		if (file == nullptr || names == nullptr)
+		if (file == nullptr)
 		{
 			cout << "Error" << endl;
 			return;
 		}
 
-		fprintf(names, "%s\n", Spisok->name);
 		fprintf(file, "%s", Spisok->tostring());
 
-		if (file != nullptr || names != nullptr)
-		{
-			fclose(file);
-			fclose(names);
-		}
+		fclose(file);
 	}
 
 };
 
-char* loading(lists* todolists);
-list* addList();
+
+int length(char* obyekt);
+void examination(int& obyekt);
+char* loadnames(lists*& todolists);
 lists* createLists(lists*& todolist);
+list* addList();
+void editList(lists* todolist);
+void deleteList(lists* todolist);
+void search(lists* todolist);
+

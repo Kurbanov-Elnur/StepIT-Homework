@@ -1,74 +1,41 @@
 #include "Functions.h"
 
-char* loading(lists* todolists)
+int length(char* obyekt)
 {
-	FILE* names{};
+	int l{};
+	while (obyekt[l] != '\n')
+		l++;
 
-	fopen_s(&names, "names.txt", "a+");
+	return l;
+}
 
-	if (names == nullptr) {
-		cout << "Error" << endl;
+char* loadnames(lists*& todolists)
+{
+	FILE* lists{};
+	fopen_s(&lists, "lists.txt", "r");
+
+	if (lists == nullptr) {
 		return nullptr;
 	}
 
-	while (!feof(names)) {
-		char* str = new char[31] {};
-		fgets(str, 30, names);
+	while (!feof(lists)) {
 		todolists[todolists->count].Spisok = new list{};
-		todolists[todolists->count].Spisok->name = str;
+
+		fgets(todolists[todolists->count].Spisok->name, 30, lists);
+		todolists[todolists->count].Spisok->name[length(todolists[todolists->count].Spisok->name)] = '\0';
+		fgets(todolists[todolists->count].Spisok->priority, 30, lists);
+		todolists[todolists->count].Spisok->priority[length(todolists[todolists->count].Spisok->priority)] = '\0';
+		fgets(todolists[todolists->count].Spisok->description, 1000, lists);
+		todolists[todolists->count].Spisok->description[length(todolists[todolists->count].Spisok->description)] = '\0';
+		fgets(todolists[todolists->count].Spisok->addDate, 8, lists);
+		todolists[todolists->count].Spisok->addDate[length(todolists[todolists->count].Spisok->addDate)] = '\0';
+		fgets(todolists[todolists->count].Spisok->executionTime, 8, lists);
+		todolists[todolists->count].Spisok->executionTime[length(todolists[todolists->count].Spisok->executionTime)] = '\0';
 		todolists->count++;
 	}
+	todolists->count--;
 
-	fclose(names);
-
-	if (todolists->count > 0)
-	{
-		for (size_t i = 0; i < todolists->count - 1; i++)
-		{
-			char* fileName = new char[31] {};
-			char* extension = new char[] {".txt"};
-
-			int z{};
-			while (todolists[i].Spisok->name[z] != '\0')
-			{
-				fileName[z] = todolists[i].Spisok->name[z];
-				z++;
-			}
-			fileName[z - 1] = '\0';
-			z--;
-
-			for (size_t j = 0; extension[j] != '\0'; j++, z++)
-				fileName[z] = extension[j];
-			FILE* lists0{};
-
-			fopen_s(&lists0, fileName, "r");
-
-			fgets(todolists[i].Spisok->name, 30, lists0);
-			fgets(todolists[i].Spisok->priority, 30, lists0);
-			fgets(todolists[i].Spisok->description, 1000, lists0);
-			fgets(todolists[i].Spisok->addDate, 2, lists0);
-			fgets(todolists[i].Spisok->executionTime, 2, lists0);
-			fclose(lists0);
-		}
-	}
-}
-
-list* addList()
-{
-	list* l = new list{};
-	getchar();
-	cout << "Enter name: ";
-	cin.getline(l->name, 30);
-
-	cout << "Enter priority: ";
-	cin.getline(l->priority, 30);
-
-	cout << "Enter description: ";
-	cin.getline(l->description, 1000);
-	cout << "Enter start day: "; cin.getline(l->addDate, 4);
-	cout << "Enter Execution Time: "; cin.getline(l->executionTime, 4);
-	cout << endl;
-	return l;
+	fclose(lists);
 }
 
 lists* createLists(lists*& todolist)
@@ -81,10 +48,68 @@ lists* createLists(lists*& todolist)
 	return todolist;
 }
 
-void examination(int &obyekt)
+list* addList()
 {
-	char vvod [101]{};
-	cin >> vvod;
+	list* l = new list{};
+	cin.ignore();
+	cout << "Enter name: ";
+	cin.getline(l->name, 30);
+
+	while ((int)l->priority[0] < 49 || (int)l->priority[0] > 51)
+	{
+		cout
+			<< "Enter priority: " << endl
+			<< "1. Urgent" << endl
+			<< "2. Important" << endl
+			<< "3. Ordinary" << endl;
+		cin.getline(l->priority, 2);
+	}
+
+	cout << "Enter description: ";
+	cin.getline(l->description, 1000);
+
+	cout << "Enter start day: "; cin.getline(l->addDate, 8);
+	while ()
+
+		cout << "Enter Execution Time: "; cin.getline(l->executionTime, 3);
+	cout << endl;
+	return l;
+}
+
+void editList(lists* todolist)
+{
+	int choice{};
+	cout << "Enter edit list: " << endl;
+
+	for (size_t i = 0; i < todolist->count; i++)
+		cout << i + 1 << '.' << todolist[i].Spisok->name << endl;
+	while (choice < 1 || choice > todolist->count)
+		examination(choice);
+
+	todolist[choice - 1].Spisok = addList();
+
+	FILE* file{};
+
+	fopen_s(&file, "lists.txt", "w");
+
+	if (file == nullptr)
+	{
+		cout << "Error" << endl;
+		return;
+	}
+
+	for (size_t i = 0; i < todolist->count; i++)
+	{
+		fprintf(file, "%s", todolist[i].Spisok->tostring());
+	}
+
+	fclose(file);
+}
+
+void examination(int& obyekt)
+{
+	char vvod[101]{};
+	cout << "Enter: "; cin >> vvod;
 
 	while ((int)vvod[0] < 47 || (int)vvod[0] > 58)
 	{
@@ -99,3 +124,111 @@ void examination(int &obyekt)
 	}
 }
 
+void deleteList(lists* todolist)
+{
+	int choice{};
+	cout << "Enter delete list: " << endl;
+
+	for (size_t i = 0; i < todolist->count; i++)
+		cout << i + 1 << '.' << todolist[i].Spisok->name << endl;
+	while (choice < 1 || choice > todolist->count)
+		examination(choice);
+
+	for (size_t i = choice - 1; i < todolist->count; i++)
+	{
+		todolist[i].Spisok->name = todolist[i + 1].Spisok->name;
+		todolist[i].Spisok->priority = todolist[i + 1].Spisok->priority;
+		todolist[i].Spisok->description = todolist[i + 1].Spisok->description;
+		todolist[i].Spisok->addDate = todolist[i + 1].Spisok->addDate;
+		todolist[i].Spisok->executionTime = todolist[i + 1].Spisok->executionTime;
+	}
+	todolist->count--;
+
+	FILE* file{};
+
+	fopen_s(&file, "lists.txt", "w");
+
+	if (file == nullptr)
+	{
+		cout << "Error" << endl;
+		return;
+	}
+
+	for (size_t i = 0; i < todolist->count; i++)
+	{
+		fprintf(file, "%s", todolist[i].Spisok->tostring());
+	}
+
+	fclose(file);
+}
+
+void search(lists* todolist)
+{
+	char search[1001]{};
+	int len{};
+
+	int choice{};
+	cout
+		<< "Enter choice: " << endl
+		<< "1. Search by name" << endl
+		<< "2. Search by priority" << endl
+		<< "3. Search by description" << endl
+		<< "4. Search by Add Date" << endl
+		<< "5. Search by Execution date" << endl;
+	while (choice < 1 || choice > 5)
+		examination(choice);
+
+	getchar();
+	cout << "Enter search word: "; cin.getline(search, 1000);
+
+	while (search[len] != '\0')
+		len++;
+
+	for (size_t i = 0; i < todolist->count; i++)
+	{
+		int yes{};
+		switch (choice)
+		{
+		case 1:
+			for (size_t j = 0; j < len; j++)
+			{
+				if (todolist[i].Spisok->name[j] == search[j])
+					yes++;
+			}
+			break;
+		case 2:
+			for (size_t j = 0; j < len; j++)
+			{
+				if (todolist[i].Spisok->priority[j] == search[j])
+					yes++;
+			}
+			break;
+		case 3:
+			for (size_t j = 0; j < len; j++)
+			{
+				if (todolist[i].Spisok->description[j] == search[j])
+					yes++;
+			}
+			break;
+		case 4:
+			for (size_t j = 0; j < len; j++)
+			{
+				if (todolist[i].Spisok->addDate[j] == search[j])
+					yes++;
+			}
+			break;
+		case 5:
+			for (size_t j = 0; j < len; j++)
+			{
+				if (todolist[i].Spisok->executionTime[j] == search[j])
+					yes++;
+			}
+			break;
+		}
+		if (yes == len)
+		{
+			cout << "Data: " << endl;
+			todolist[i].Spisok->print();
+		}
+	}
+}
