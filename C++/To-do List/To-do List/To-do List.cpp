@@ -1,45 +1,34 @@
 #include "Functions.h"
-
 int main()
 {
-	list* Lists = new list[1000];
-	int choice{};
+	lists* toDoList = createLists(toDoList);
+	loading(toDoList);
+
 	while (true)
 	{
+		int choice{};
 		cout
-			<< "Enter your choice: " << endl
-			<< "1. Add" << endl
-			<< "2. Delete" << endl;
-		examination(choice);
+			<< "Enter your chocie: " << endl
+			<< "1. Add " << endl
+			<< "2. Show names" << endl;
+		cin >> choice;
 
 		switch (choice)
 		{
-			case 1:
-				system("cls");
-				addList(Lists);
-				break;
-			case 2:
-				system("cls");
-				showAll(Lists);
-				deleteList(Lists);
-				break;
-			case 3:
-				system("cls");
-				showAll(Lists);
-				editList(Lists);
-				break;
-			case 4:
-				system("cls");
-				searchName(Lists);
-				break;
-			case 5:
-				system("cls");
-				createTXT(Lists);
-				break;
-			default:
-				break;
+		case 1:
+			system("cls");
+			toDoList[toDoList->count].Spisok = addList();
+			toDoList[toDoList->count].savetoFile();
+			toDoList->count++;
+			break;
+		case 2:
+			system("cls");
+			for (size_t i = 0; i < toDoList->count; i++)
+			{
+				toDoList[i].Spisok->print();
+			}
+		default:
+			break;
 		}
 	}
-
-	return 0;
 }

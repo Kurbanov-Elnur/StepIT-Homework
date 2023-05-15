@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void plusMinus(float* &numbers, char* &operators, int &i)
+void plusMinus(float*& numbers, char*& operators, int& i)
 {
 	int j{};
 	if (operators[i] == '+')
@@ -28,7 +28,7 @@ void plusMinus(float* &numbers, char* &operators, int &i)
 	i--;
 }
 
-void multidivision(float*& numbers, char*& operators, int &i)
+void multidivision(float*& numbers, char*& operators, int& i)
 {
 	int j{};
 	if (operators[i] == '*')

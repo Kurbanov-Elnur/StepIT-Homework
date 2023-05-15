@@ -151,6 +151,7 @@ int main()
 		move++;
 		if (s == size)
 		{
+			system("cls");
 			cout << "You win!" << endl;
 			stop = false;
 			continue;

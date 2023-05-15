@@ -1,55 +1,84 @@
 #include "Functions.h"
 
-
-void addList(list*& Lists)
+char* loading(lists* todolists)
 {
-	getchar();
+	FILE* names{};
 
-	cout << "Enter name: "; cin.getline(Lists[Lists->count].name, 30);
-	cout << "Enter priority: "; cin.getline(Lists[Lists->count].priority, 30);
-	cout << "Enter description: "; cin.getline(Lists[Lists->count].description, 1000);
+	fopen_s(&names, "names.txt", "a+");
 
-	cout << "Enter day start: "; 
-	examination(Lists[Lists->count].addDate[0]);
-	cout << "Enter month start: ";
-	examination(Lists[Lists->count].addDate[1]);
-	cout << "Enter year start: ";
-	examination(Lists[Lists->count].addDate[2]);
-	cout << "Enter execution time: ";
-	examination(Lists[Lists->count].executionTime);
-
-	Lists->count++;
-}
-
-void showAll(list* Lists)
-{
-	for (size_t i = 0; i < Lists->count; i++)
-	{
-		cout << i + 1 << ": " << Lists[i].name << endl;
+	if (names == nullptr) {
+		cout << "Error" << endl;
+		return nullptr;
 	}
-}
 
-void deleteList(list*& Lists)
-{
-	int choice{};
-	cout << "Choose list to delete:" << endl;
-	cin >> choice;
+	while (!feof(names)) {
+		char* str = new char[31] {};
+		fgets(str, 30, names);
+		todolists[todolists->count].Spisok = new list{};
+		todolists[todolists->count].Spisok->name = str;
+		todolists->count++;
+	}
 
-	getchar();
+	fclose(names);
 
-	int index = choice - 1;
-	for (int i = choice - 1; i < Lists->count; ++i)
+	if (todolists->count > 0)
 	{
-		index++;
-		Lists[i].name = Lists[i + 1].name;
-		Lists[i].description = Lists[i + 1].description;
-		Lists[i].priority = Lists[i + 1].priority;
-		for (size_t j = 0; j < 3; j++)
+		for (size_t i = 0; i < todolists->count - 1; i++)
 		{
-			Lists[i].addDate[j] = Lists[i + 1].addDate[j];
+			char* fileName = new char[31] {};
+			char* extension = new char[] {".txt"};
+
+			int z{};
+			while (todolists[i].Spisok->name[z] != '\0')
+			{
+				fileName[z] = todolists[i].Spisok->name[z];
+				z++;
+			}
+			fileName[z - 1] = '\0';
+			z--;
+
+			for (size_t j = 0; extension[j] != '\0'; j++, z++)
+				fileName[z] = extension[j];
+			FILE* lists0{};
+
+			fopen_s(&lists0, fileName, "r");
+
+			fgets(todolists[i].Spisok->name, 30, lists0);
+			fgets(todolists[i].Spisok->priority, 30, lists0);
+			fgets(todolists[i].Spisok->description, 1000, lists0);
+			fgets(todolists[i].Spisok->addDate, 2, lists0);
+			fgets(todolists[i].Spisok->executionTime, 2, lists0);
+			fclose(lists0);
 		}
 	}
-	Lists->count--;
+}
+
+list* addList()
+{
+	list* l = new list{};
+	getchar();
+	cout << "Enter name: ";
+	cin.getline(l->name, 30);
+
+	cout << "Enter priority: ";
+	cin.getline(l->priority, 30);
+
+	cout << "Enter description: ";
+	cin.getline(l->description, 1000);
+	cout << "Enter start day: "; cin.getline(l->addDate, 4);
+	cout << "Enter Execution Time: "; cin.getline(l->executionTime, 4);
+	cout << endl;
+	return l;
+}
+
+lists* createLists(lists*& todolist)
+{
+	todolist = new lists{};
+	cout << "Enter name: "; cin.getline(todolist->name, 30);
+
+	todolist->Spisok = new list[100]{};
+
+	return todolist;
 }
 
 void examination(int &obyekt)
@@ -68,50 +97,5 @@ void examination(int &obyekt)
 		obyekt *= 10;
 		obyekt += (int)vvod[1] - (int)'0';
 	}
-}
-
-void editList(list*& Lists)
-{
-	int c{};
-	examination(c);
-
-	getchar();
-
-	cout << "Enter new name: "; cin.getline(Lists[c].name, 100);
-	cout << "Enter new priority: "; cin.getline(Lists[c].priority, 30);
-	cout << "Enter new description: "; cin.getline(Lists[c].description, 1000);
-
-	cout << "Enter new day start: ";
-	examination(Lists[c].addDate[0]);
-	cout << "Enter new month start: ";
-	examination(Lists[c].addDate[1]);
-	cout << "Enter new year start: ";
-	examination(Lists[c].addDate[2]);
-	cout << "Enter new execution time: ";
-	examination(Lists[c].executionTime);
-}
-
-void searchName(list* Lists)
-{
-		char search[31]{};
-		int len{};
-
-		getchar();
-		cout << "Enter name: "; cin.getline(search, 30);
-
-		while (search[len] != '\0')
-			len++;
-
-		for (size_t i = 0; i < Lists->count; i++)
-		{
-			int yes{};
-			for (size_t j = 0; j < len; j++)
-			{
-				if (Lists[i].name[j] == search[j])
-					yes++;
-			}
-			if (yes == len)
-				cout << "Case numbered: " << i + 1 << endl;
-		}
 }
 
