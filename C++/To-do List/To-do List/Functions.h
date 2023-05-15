@@ -4,10 +4,10 @@ using namespace std;
 struct list
 {
 	char* name = new char[33] {};
-	char* priority = new char[3] {};
+	char* priority = new char[15] {};
 	char* description = new char[1003] {};
 	char* addDate = new char[10] {};
-	char* executionTime = new char[5] {};
+	char* executionTime = new char[15] {};
 
 	char* tostring()
 	{
@@ -20,10 +20,10 @@ struct list
 	{
 		cout 
 			<< "Name: " << name << endl
-			 << "Priority: " << priority << endl
-			 << "Description: " << description << endl
-			 << "Add Date: " << addDate << endl
-			 <<"Execution Time: " << addDate << endl;
+			<< "Priority: " << priority << endl
+			<< "Description: " << description << endl
+			<< "Add Date: " << addDate << endl
+			<< "Execution Time: " << addDate << endl;
 	}
 };
 
@@ -55,10 +55,10 @@ struct lists
 
 int length(char* obyekt);
 void examination(int& obyekt);
-char* loadnames(lists*& todolists);
+void loadnames(lists*& todolists);
 lists* createLists(lists*& todolist);
 list* addList();
 void editList(lists* todolist);
 void deleteList(lists* todolist);
 void search(lists* todolist);
-
+void printExecution(lists* todolist);

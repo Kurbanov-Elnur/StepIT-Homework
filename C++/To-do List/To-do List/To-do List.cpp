@@ -15,8 +15,9 @@ int main()
 			<< "2. Show names" << endl
 			<< "3. Edit work" << endl
 			<< "4. Delete work" << endl
-			<< "5. Search work" << endl;
-		while (choice < 1 || choice > 5)
+			<< "5. Search work" << endl
+			<< "6. Display by execution time" << endl;
+		while (choice < 1 || choice > 6)
 			examination(choice);
 
 		switch (choice)
@@ -29,7 +30,6 @@ int main()
 			break;
 		case 2:
 			system("cls");
-			loadnames(toDoList);
 			for (size_t i = 0; i < toDoList->count; i++)
 				toDoList[i].Spisok->print();
 			break;
@@ -44,6 +44,10 @@ int main()
 		case 5:
 			system("cls");
 			search(toDoList);
+			break;
+		case 6:
+			system("cls");
+			printExecution(toDoList);
 			break;
 		default:
 			break;
