@@ -58,7 +58,7 @@ char* examination(float*& numbers, char*& operators)
 {
 	bool close = true;
 	char* calculator = new char[401] {};
-	char* kovicki = new char[20] {};
+	char* brackets = new char[20] {};
 	while (close)
 	{
 		numbers = new float[200] {};
@@ -86,18 +86,41 @@ char* examination(float*& numbers, char*& operators)
 				}
 				j++;
 			}
+			else if ((int)calculator[a] == '(' && (int)calculator[a + 1] == '-')
+			{
+				a += 2;
+				if ((int)calculator[a] > 47 && (int)calculator[a] < 58)
+				{
+					numbers[j] = (int)calculator[a] - (int)'0';
+					while ((int)calculator[a + 1] > 47 && (int)calculator[a + 1] < 58)
+					{
+						numbers[j] *= 10;
+						a++;
+						numbers[j] += (int)calculator[a] - (int)'0';
+					}
+					numbers[j] *= -1;
+					j++;
+				}
+				if (calculator[a + 1] != ')')
+				{
+					close = true;
+					continue;
+				}
+				else
+					a++;
+			}
 			else if ((int)calculator[a] > 39 && (int)calculator[a] < 48)
 			{
 				if (calculator[a] == '(' || calculator[a] == ')')
 				{
-					kovicki[z] = calculator[a];
+					brackets[z] = calculator[a];
 					z++;
 				}
 				else
 				{
 					operators[v] = calculator[a];
 					v++;
-					kovicki[z] = calculator[a];
+					brackets[z] = calculator[a];
 					z++;
 				}
 			}
@@ -115,49 +138,48 @@ char* examination(float*& numbers, char*& operators)
 		}
 	}
 
-	for (size_t i = 0; kovicki[i] != '\0'; i++)
+	for (size_t i = 0; brackets[i] != '\0'; i++)
 	{
-		if (kovicki[i] == '(')
+		if (brackets[i] == '(')
 		{
-			for (int j = i + 1; kovicki[j] != ')'; j++)
+			for (int j = i + 1; brackets[j] != ')'; j++)
 			{
-				if (kovicki[j] == '*' || kovicki[j] == '/')
+				if (brackets[j] == '*' || brackets[j] == '/')
 				{
 					int v = j - 1;
 					multidivision(numbers, operators, v);
 					int z = j;
-					for (z; kovicki[z] != '\0'; z++)
-						kovicki[z] = kovicki[z + 1];
-					kovicki[z - 1] = '\0';
+					for (z; brackets[z] != '\0'; z++)
+						brackets[z] = brackets[z + 1];
+					brackets[z - 1] = '\0';
 					j--;
 				}
-
 			}
-			for (int j = i + 1; kovicki[j] != ')'; j++)
+			for (int j = i + 1; brackets[j] != ')'; j++)
 			{
-				if (kovicki[j] == '+' || kovicki[j] == '-')
+				if (brackets[j] == '+' || brackets[j] == '-')
 				{
 					int v = j - 1;
 					plusMinus(numbers, operators, v);
 					int z = j;
-					for (z; kovicki[z] != '\0'; z++)
-						kovicki[z] = kovicki[z + 1];
-					kovicki[z - 1] = '\0';
+					for (z; brackets[z] != '\0'; z++)
+						brackets[z] = brackets[z + 1];
+					brackets[z - 1] = '\0';
 					j--;
 				}
 			}
 			int l = i;
-			for (l; kovicki[l] != '\0'; l++)
-				kovicki[l] = kovicki[l + 1];
-			kovicki[l] == '\0';
+			for (l; brackets[l] != '\0'; l++)
+				brackets[l] = brackets[l + 1];
+			brackets[l] == '\0';
 			i--;
 		}
-		else if (kovicki[i] == ')')
+		else if (brackets[i] == ')')
 		{
 			int l = i;
-			for (l; kovicki[l] != '\0'; l++)
-				kovicki[l] = kovicki[l + 1];
-			kovicki[l] == '\0';
+			for (l; brackets[l] != '\0'; l++)
+				brackets[l] = brackets[l + 1];
+			brackets[l] == '\0';
 			i--;
 		}
 	}
