@@ -30,7 +30,8 @@ int main()
 		case 2:
 			system("cls");
 			loadnames(toDoList);
-			toDoList[0].Spisok->print();
+			for (size_t i = 0; i < toDoList->count; i++)
+				toDoList[i].Spisok->print();
 			break;
 		case 3:
 			system("cls");

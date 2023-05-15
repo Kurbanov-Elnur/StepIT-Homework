@@ -18,11 +18,12 @@ struct list
 
 	void print()
 	{
-		cout << "Name: " << name << endl;
-		cout << "Priority: " << priority << endl;
-		cout << "Description: " << description << endl;
-		cout << "Add Date: " << addDate << endl;
-		cout << "Execution Time: " << addDate << endl;
+		cout 
+			<< "Name: " << name << endl
+			 << "Priority: " << priority << endl
+			 << "Description: " << description << endl
+			 << "Add Date: " << addDate << endl
+			 <<"Execution Time: " << addDate << endl;
 	}
 };
 
