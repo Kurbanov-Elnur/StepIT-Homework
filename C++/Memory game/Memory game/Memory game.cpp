@@ -58,6 +58,33 @@ void createField(int*& field, int y, int size)
 	}
 }
 
+void printField(int* field, int numbers[], int size, int choice, int& yes)
+{
+	system("cls");
+	for (size_t i = 0; i < size; i++)
+	{
+		if (choice == numbers[i])
+		{
+			if (field[i] != 20)
+			{
+				cout << "\t" << field[i];
+				yes = i;
+			}
+			else
+				cout << "\t ";
+		}
+		else
+		{
+			if (field[i] != 20)
+				cout << "\t* ";
+			else
+				cout << "\t ";
+		}
+		if ((i + 1) % 4 == 0)
+			cout << endl;
+	}
+}
+
 int main()
 {
 	int* field{};
@@ -98,24 +125,26 @@ int main()
 			if ((i + 1) % 4 == 0)
 				cout << endl;
 		}
-		int choice1{}, choice2{};
-		while (choice1 == choice2)
+		int choice1{}, choice2{}, first = 50, second = 50;
+		int m{};
+		while (m == 0)
 		{
-			int m{};
-			while (m == 0)
+			getClick(x, y);
+			choice1 = (x *= 10) + y;
+			for (size_t i = 0; numbers[i] != 0; i++)
 			{
-				getClick(x, y);
-				choice1 = (x *= 10) + y;
-				for (size_t i = 0; numbers[i] != 0; i++)
+				if (choice1 == numbers[i])
 				{
-					if (choice1 == numbers[i])
-					{
-						m++;
-						break;
-					}
+					m++;
+					break;
 				}
 			}
-			m--;
+		}
+		printField(field, numbers, size, choice1, first);
+		choice2 = choice1;
+		m--;
+		while (choice2 == choice1)
+		{
 			while (m == 0)
 			{
 				getClick(x, y);
@@ -129,46 +158,16 @@ int main()
 					}
 				}
 			}
+			m--;
 		}
-		system("cls");
-		int first = 50, second = 50;
-		for (size_t i = 0; i < size; i++)
-		{
-			if (choice1 == numbers[i])
-			{
-				if (field[i] != 20)
-				{
-					cout << "\t " << field[i];
-					first = i;
-				}
-				else
-					cout << "\t ";
-			}
-			else if (choice2 == numbers[i])
-			{
-				if (field[i] != 20)
-				{
-					cout << "\t " << field[i];
-					second = i;
-				}
-				else
-					cout << "\t ";
-			}
-			else
-			{
-				if (field[i] != 20)
-					cout << "\t *";
-				else
-					cout << "\t ";
-			}
-			if ((i + 1) % 4 == 0)
-				cout << endl;
-		}
+		printField(field, numbers, size, choice2, second);
+
 		if (field[second] == field[first])
 		{
 			field[second] = 20;
 			field[first] = 20;
 		}
+
 		int s{};
 		for (size_t i = 0; i < size; i++)
 		{
