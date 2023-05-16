@@ -30,7 +30,6 @@ void getClick(int& x, int& y)
 			break;
 		}
 		else if (inputRec.EventType == KEY_EVENT) {
-			cout << inputRec.Event.KeyEvent.wVirtualKeyCode << endl;
 		}
 	}
 }
@@ -82,7 +81,7 @@ int main()
 		size = 32;
 
 	createField(field, y, size);
-	int numbers[32]{ 80, 160, 240, 320, 81, 161, 241, 321, 82, 162, 242, 322, 83, 163, 243, 323,84, 164, 244, 324,  85, 165, 245, 325, 86, 166, 246, 326, 87, 167, 247, 327};
+	int numbers[33]{ 80, 160, 240, 320, 81, 161, 241, 321, 82, 162, 242, 322, 83, 163, 243, 323,84, 164, 244, 324,  85, 165, 245, 325, 86, 166, 246, 326, 87, 167, 247, 327};
 	bool stop = true;
 	int time1 = time(0);
 	int move{};
@@ -99,10 +98,38 @@ int main()
 			if ((i + 1) % 4 == 0)
 				cout << endl;
 		}
-		getClick(x, y);
-		int choice1 = (x *= 10) + y;
-		getClick(x, y);
-		int choice2 = (x *= 10) + y;
+		int choice1{}, choice2{};
+		while (choice1 == choice2)
+		{
+			int m{};
+			while (m == 0)
+			{
+				getClick(x, y);
+				choice1 = (x *= 10) + y;
+				for (size_t i = 0; numbers[i] != 0; i++)
+				{
+					if (choice1 == numbers[i])
+					{
+						m++;
+						break;
+					}
+				}
+			}
+			m--;
+			while (m == 0)
+			{
+				getClick(x, y);
+				choice2 = (x *= 10) + y;
+				for (size_t i = 0; numbers[i] != 0; i++)
+				{
+					if (choice2 == numbers[i])
+					{
+						m++;
+						break;
+					}
+				}
+			}
+		}
 		system("cls");
 		int first = 50, second = 50;
 		for (size_t i = 0; i < size; i++)
@@ -158,7 +185,7 @@ int main()
 		}
 
 		char a{}; 
-		cout << "Continue:";
+		cout << "Enter anything to continue:";
 		cin >> a;
 	}
 	int time2 = time(0) - time1;

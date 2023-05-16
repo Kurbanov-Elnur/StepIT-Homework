@@ -52,7 +52,6 @@ struct lists
 
 };
 
-
 int length(char* obyekt);
 void examination(int& obyekt);
 void loadnames(lists*& todolists);
