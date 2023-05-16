@@ -104,11 +104,15 @@ list* addList()
 
 void editList(lists* todolist)
 {
+	if (todolist->count == NULL)
+		return;
+
 	int choice{};
 	cout << "Enter edit list: " << endl;
 
 	for (size_t i = 0; i < todolist->count; i++)
-		cout << i + 1 << '.' << todolist[i].Spisok->name << endl;
+			cout << i + 1 << '.' << todolist[i].Spisok->name << endl;
+
 	while (choice < 1 || choice > todolist->count)
 		examination(choice);
 
@@ -134,11 +138,14 @@ void editList(lists* todolist)
 
 void deleteList(lists* todolist)
 {
+	if (todolist->count == NULL)
+		return;
+
 	int choice{};
 	cout << "Enter delete list: " << endl;
 
 	for (size_t i = 0; i < todolist->count; i++)
-		cout << i + 1 << '.' << todolist[i].Spisok->name << endl;
+			cout << i + 1 << '.' << todolist[i].Spisok->name << endl;
 	while (choice < 1 || choice > todolist->count)
 		examination(choice);
 
@@ -174,6 +181,8 @@ void search(lists* todolist)
 {
 	char search[1001]{};
 	int len{};
+	if (todolist->count == NULL)
+		return;
 
 	int choice{};
 	cout
@@ -243,6 +252,9 @@ void search(lists* todolist)
 
 void printExecution(lists* todolist)
 {
+	if (todolist->count == NULL)
+		return;
+
 	char choice[5]{};
 	cout
 		<< "Enter choice: " << endl
@@ -256,5 +268,76 @@ void printExecution(lists* todolist)
 	{
 		if ((int)todolist[i].Spisok->executionTime[0] == (int)choice[0])
 			cout << todolist[i].Spisok->name << endl;
+	}
+}
+
+void sort(lists* todolist)
+{
+	if (todolist->count == NULL)
+		return;
+
+	int choice{};
+	cout
+		<< "How to sort? " << endl
+		<< "1. By priority" << endl
+		<< "2. By exxecution time" << endl;
+	
+	while (choice < 1 || choice > todolist->count)
+		examination(choice);
+
+	switch (choice)
+	{
+		case 1:
+			for (size_t i = 0; i < todolist->count; i++)
+			{
+				for (size_t j = 0; j < todolist->count; j++)
+				{
+					if ((int)todolist[i].Spisok->priority[0] < (int)todolist[j].Spisok->priority[0])
+					{
+						char* r = todolist[i].Spisok->name;
+						todolist[i].Spisok->name = todolist[j].Spisok->name;
+						todolist[j].Spisok->name = r;
+						r = todolist[i].Spisok->priority;
+						todolist[i].Spisok->priority = todolist[j].Spisok->priority;
+						todolist[j].Spisok->priority = r;
+						r = todolist[i].Spisok->description;
+						todolist[i].Spisok->description = todolist[j].Spisok->description;
+						todolist[j].Spisok->description = r;
+						r = todolist[i].Spisok->addDate;
+						todolist[i].Spisok->addDate = todolist[j].Spisok->addDate;
+						todolist[j].Spisok->addDate = r;
+						r = todolist[i].Spisok->executionTime;
+						todolist[i].Spisok->executionTime = todolist[j].Spisok->executionTime;
+						todolist[j].Spisok->executionTime = r;
+					}
+				}
+			}
+			break;
+		case 2:
+			for (size_t i = 0; i < todolist->count; i++)
+			{
+				for (size_t j = 0; j < todolist->count; j++)
+				{
+					if ((int)todolist[i].Spisok->executionTime[0] < (int)todolist[j].Spisok->executionTime[0])
+					{
+						char* r = todolist[i].Spisok->name;
+						todolist[i].Spisok->name = todolist[j].Spisok->name;
+						todolist[j].Spisok->name = r;
+						r = todolist[i].Spisok->priority;
+						todolist[i].Spisok->priority = todolist[j].Spisok->priority;
+						todolist[j].Spisok->priority = r;
+						r = todolist[i].Spisok->description;
+						todolist[i].Spisok->description = todolist[j].Spisok->description;
+						todolist[j].Spisok->description = r;
+						r = todolist[i].Spisok->addDate;
+						todolist[i].Spisok->addDate = todolist[j].Spisok->addDate;
+						todolist[j].Spisok->addDate = r;
+						r = todolist[i].Spisok->executionTime;
+						todolist[i].Spisok->executionTime = todolist[j].Spisok->executionTime;
+						todolist[j].Spisok->executionTime = r;
+					}
+				}
+			}
+			break;
 	}
 }

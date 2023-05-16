@@ -5,8 +5,9 @@ int main()
 	lists* toDoList{};
 	createLists(toDoList);
 	loadnames(toDoList);
+	bool close = true;
 
-	while (true)
+	while (close)
 	{
 		int choice{};
 		cout
@@ -16,8 +17,10 @@ int main()
 			<< "3. Edit work" << endl
 			<< "4. Delete work" << endl
 			<< "5. Search work" << endl
-			<< "6. Display by execution time" << endl;
-		while (choice < 1 || choice > 6)
+			<< "6. Display by execution time" << endl
+			<< "7. Sort by priority or execution time: " << endl
+			<< "8. Exiting the programm" << endl;
+		while (choice < 1 || choice > 8)
 			examination(choice);
 
 		switch (choice)
@@ -49,7 +52,12 @@ int main()
 			system("cls");
 			printExecution(toDoList);
 			break;
-		default:
+		case 7:
+			system("cls");
+			sort(toDoList);
+			break;
+		case 8:
+			close = false;
 			break;
 		}
 	}

@@ -61,3 +61,4 @@ void editList(lists* todolist);
 void deleteList(lists* todolist);
 void search(lists* todolist);
 void printExecution(lists* todolist);
+void sort(lists* todolist);
