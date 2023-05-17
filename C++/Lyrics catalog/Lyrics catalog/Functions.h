@@ -57,3 +57,4 @@ int length(char* obyekt);
 song* addSong();
 void deleteSong(songs* Songs);
 void editSongs(songs* Songs);
+void bySearchAuthor(songs* Songs);

@@ -140,9 +140,9 @@ char* examination(float*& numbers, char*& operators)
 
 	for (size_t i = 0; brackets[i] != '\0'; i++)
 	{
-		if (brackets[i] == '(')
+		if (brackets[i] == ')')
 		{
-			for (int j = i + 1; brackets[j] != ')'; j++)
+			for (size_t j = i - 1; brackets[j] != '('; j--)
 			{
 				if (brackets[j] == '*' || brackets[j] == '/')
 				{
@@ -155,7 +155,7 @@ char* examination(float*& numbers, char*& operators)
 					j--;
 				}
 			}
-			for (int j = i + 1; brackets[j] != ')'; j++)
+			for (int j = i - 1; brackets[j] != '('; j--)
 			{
 				if (brackets[j] == '+' || brackets[j] == '-')
 				{
@@ -167,23 +167,15 @@ char* examination(float*& numbers, char*& operators)
 					brackets[z - 1] = '\0';
 					j--;
 				}
+				int l = i;
+				for (l; brackets[l] != '\0'; l++)
+					brackets[l] = brackets[l + 1];
+				brackets[l] == '\0';
+				i--;
 			}
-			int l = i;
-			for (l; brackets[l] != '\0'; l++)
-				brackets[l] = brackets[l + 1];
-			brackets[l] == '\0';
-			i--;
-		}
-		else if (brackets[i] == ')')
-		{
-			int l = i;
-			for (l; brackets[l] != '\0'; l++)
-				brackets[l] = brackets[l + 1];
-			brackets[l] == '\0';
-			i--;
+
 		}
 	}
-
 	return calculator;
 }
 

@@ -132,6 +132,9 @@ song* addSong()
 
 void deleteSong(songs* Songs)
 {
+	if (Songs->count == NULL)
+		return;
+
 	int choice{};
 	cout << "Enter delete song: " << endl;
 
@@ -140,7 +143,14 @@ void deleteSong(songs* Songs)
 	while (choice < 1 || choice > Songs->count)
 		examination(choice);
 	
-	Songs[choice - 1].Song->text = new char[1003] {};
+	for (size_t i = choice - 1; i < Songs->count; i++)
+	{
+		Songs[i].Song->name = Songs[i + 1].Song->name;
+		Songs[i].Song->author = Songs[i + 1].Song->author;
+		Songs[i].Song->text = Songs[i + 1].Song->text;
+		Songs[i].Song->year = Songs[i + 1].Song->year;
+	}
+	Songs->count--;
 
 	FILE* file{};
 
@@ -162,6 +172,9 @@ void deleteSong(songs* Songs)
 
 void editSongs(songs* Songs)
 {
+	if (Songs->count == NULL)
+		return;
+
 	int choice{};
 	cout << "Enter edit song: " << endl;
 
@@ -169,57 +182,8 @@ void editSongs(songs* Songs)
 		cout << i + 1 << '.' << Songs[i].Song->name << endl;
 	while (choice < 1 || choice > Songs->count)
 		examination(choice);
-
-	int c{};
-	cout
-		<< "1. Manual input" << endl
-		<< "2. Loading from a file" << endl;
-	while (c < 1 || c > 2)
-		examination(c);
-	cin.ignore();
-	if (c == 1)
-	{
-		cout << "Enter text: ";
-		cin.getline(Songs[choice - 1].Song->text, 1000);
-	}
-	else if (c == 2)
-	{
-		char* filename = new char[30] {};
-		char* fileName = new char[34] {};
-		char* extension = new char[] {".txt"};
-
-		cout << "Enter file name: ";
-		cin.getline(filename, 30);
-
-		int i = 0;
-		while (filename[i] != '\0') {
-			fileName[i] = filename[i];
-			i++;
-		}
-
-		int j = 0;
-		while (extension[j] != '\0') {
-			fileName[i] = extension[j];
-			i++;
-			j++;
-		}
-
-		delete[] filename;
-
-		FILE* file{};
-		fopen_s(&file, fileName, "r");
-
-		if (file == nullptr) {
-			cout << "Error" << endl;
-			return;
-		}
-
-		while (!feof(file)) {
-			fgets(Songs[choice - 1].Song->text, 1000, file);
-		}
-
-		fclose(file);
-	}
+	
+	Songs[choice - 1].Song = addSong();
 
 	FILE* file{};
 
@@ -237,4 +201,34 @@ void editSongs(songs* Songs)
 	}
 
 	fclose(file);
+}
+
+void bySearchAuthor(songs* Songs)
+{
+	char search[1001]{};
+	int len{};
+	if (Songs->count == NULL)
+		return;
+
+	cin.ignore();
+	cout << "Enter search author: "; cin.getline(search, 1000);
+
+	while (search[len] != '\0')
+		len++;
+
+	for (size_t i = 0; i < Songs->count; i++)
+	{
+		int yes{};
+		for (size_t j = 0; j < len; j++)
+		{
+			if (Songs[i].Song->author[j] == search[j])
+				yes++;
+		}
+
+		if (yes == len)
+		{
+			cout << "Data: " << endl;
+			Songs->Song->print();
+		}
+	}
 }

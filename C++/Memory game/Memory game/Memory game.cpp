@@ -36,10 +36,8 @@ void getClick(int& x, int& y)
 
 void createField(int*& field, int y, int size)
 {
-
 	field = new int[size] {};
 	int* count = new int[size]{};
-
 
 	srand(time(0));
 	int r{};
