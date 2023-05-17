@@ -203,7 +203,7 @@ void editSongs(songs* Songs)
 	fclose(file);
 }
 
-void bySearchAuthor(songs* Songs)
+void bySearch(songs* Songs)
 {
 	char search[1001]{};
 	int len{};
@@ -211,24 +211,59 @@ void bySearchAuthor(songs* Songs)
 		return;
 
 	cin.ignore();
-	cout << "Enter search author: "; cin.getline(search, 1000);
+	int choice{};
+	cout
+		<< "Enter search type: " << endl
+		<< "1. Author" << endl
+		<< "2. Text" << endl;
+	while (choice < 1 || choice > 2)
+		examination(choice);
 
-	while (search[len] != '\0')
-		len++;
-
-	for (size_t i = 0; i < Songs->count; i++)
+	switch (choice)
 	{
-		int yes{};
-		for (size_t j = 0; j < len; j++)
-		{
-			if (Songs[i].Song->author[j] == search[j])
-				yes++;
-		}
+		case 1:
+			cout << "Enter search author: "; cin.getline(search, 1000);
 
-		if (yes == len)
-		{
-			cout << "Data: " << endl;
-			Songs->Song->print();
-		}
+			while (search[len] != '\0')
+				len++;
+
+			for (size_t i = 0; i < Songs->count; i++)
+			{
+				int yes{};
+				for (size_t j = 0; j < len; j++)
+				{
+					if (Songs[i].Song->author[j] == search[j])
+						yes++;
+				}
+
+				if (yes == len)
+				{
+					cout << "Data: " << endl;
+					Songs->Song->print();
+				}
+			}
+			break;
+		case 2:
+			cout << "Enter search text: "; cin.getline(search, 1000);
+
+			while (search[len] != '\0')
+				len++;
+
+			for (size_t i = 0; i < Songs->count; i++)
+			{
+				int yes{};
+				for (size_t j = 0; j < len; j++)
+				{
+					if (Songs[i].Song->text[j] == search[j])
+						yes++;
+				}
+
+				if (yes == len)
+				{
+					cout << "Data: " << endl;
+					Songs->Song->print();
+				}
+			}
+			break;
 	}
 }
