@@ -181,9 +181,9 @@ int main()
 			continue;
 		}
 
-		char a{}; 
+		char* a = new char[1000]{}; 
 		cout << "Enter anything to continue:";
-		cin >> a;
+		cin.getline(a, 1000);
 	}
 	int time2 = time(0) - time1;
 	cout << "You did it in " << time2 << "seconds!" << endl;
