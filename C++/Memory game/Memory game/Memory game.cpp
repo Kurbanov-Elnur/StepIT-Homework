@@ -92,7 +92,7 @@ int main()
 		<< "1. 4X4" << endl
 		<< "2. 6X6" << endl;
 	getClick(x, y);
-	while (y < 1 && y > 3)
+	while (y < 1 && y > 3 || x > 5)
 	{
 		cout << "Invalid input, re-enter: " << endl;
 		getClick(x, y);
