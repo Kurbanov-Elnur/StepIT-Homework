@@ -95,13 +95,9 @@ int main()
 			cout << '\t';
 			if (size == 9)
 			{
-				if (field[i] == 0)
-					cout << "  ";
-				else {
-					cout << field[i] << ' ';
-					if ((i + 1) % 3 == 0)
-						cout << endl;
-				}
+				cout << field[i] << ' ';
+				if ((i + 1) % 3 == 0)
+					cout << endl;
 			}
 			else
 			{
