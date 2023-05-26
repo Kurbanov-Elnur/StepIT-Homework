@@ -128,6 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="21.cpp" />
+    <ClCompile Include="Class.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Class.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
