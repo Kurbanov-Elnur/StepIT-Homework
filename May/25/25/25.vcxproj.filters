@@ -15,22 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="23.cpp">
+    <ClCompile Include="25.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Class.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Struct.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Class.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Struct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
