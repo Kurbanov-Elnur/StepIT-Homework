@@ -28,6 +28,8 @@ int main()
 		<< "3. Multiplication" << endl
 		<< "4. Divicion" << endl;
 	cin >> choice;
+	if(choice > 4 || choice <= 0)
+		cout << "Invalid input! Good bye)";
 
 	enter(num, den);
 	Fraction second(num, den);
