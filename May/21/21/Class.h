@@ -1,11 +1,11 @@
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 class Fraction
 {
 public:
-	int numerator{};
-	int denominator{};
+	int numerator{}; // числитель
+	int denominator{}; // знаменатель
 
 	Fraction() = default;
 
@@ -18,4 +18,5 @@ public:
 	Fraction addition(Fraction b);
 	Fraction subtraction(Fraction b);
 	Fraction multiplication(Fraction b);
+	Fraction division(Fraction b);
 };

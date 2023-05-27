@@ -1,13 +1,44 @@
 #include "Class.h"
 
+Fraction reduction(Fraction c)
+{
+	int num{};
+
+	if (c.denominator > c.numerator)
+		num = c.numerator;
+	else
+		num = c.denominator;
+
+	for (size_t i = num; i > 0; i--)
+	{
+		int y1 = 3, y2 = 4;
+		if (c.numerator % i == 0)
+			y1 = 1;
+		if (c.denominator % i == 0)
+			y2 = 1;
+
+		if (y1 == y2)
+		{
+			num = i;
+			break;
+		}
+	}
+
+	c.numerator /= num;
+	c.denominator /= num;
+
+	return c;
+}
+
+
 Fraction Fraction :: addition(Fraction b)
 {
 	Fraction c{};
 
-	c.denominator = denominator * b.denominator;
 	c.numerator = (numerator * b.denominator) + (b.numerator * denominator);
+	c.denominator = denominator * b.denominator;
 
-	return c;
+	return reduction(c);
 }
 
 
@@ -31,12 +62,27 @@ Fraction Fraction::subtraction(Fraction b)
 
 	c.numerator = (numerator * (c.denominator / denominator)) - (b.numerator * (c.denominator / b.denominator));
 
-	return c;
+	return reduction(c);
 }
+
 
 Fraction Fraction :: multiplication(Fraction b)
 {
 	Fraction c{};
 
+	c.numerator = numerator * b.numerator;
+	c.denominator = denominator * b.denominator;
 
+	return reduction(c);;
+}
+
+
+Fraction Fraction :: division(Fraction b)
+{
+	Fraction c{};
+
+	c.numerator = numerator * b.denominator;
+	c.denominator = denominator * b.numerator;
+
+	return reduction(c);
 }

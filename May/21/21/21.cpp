@@ -19,19 +19,18 @@ int main()
 	int num{}, den{};
 
 	enter(num, den);
-
 	Fraction first(num, den);
-
-	enter(num, den);
-
-	Fraction second(num, den);
 
 	cout
 		<< "Enter choice: " << endl
 		<< "1. Addition" << endl
 		<< "2. Subtraction" << endl
-		<< "3. Multiplication" << endl;
+		<< "3. Multiplication" << endl
+		<< "4. Divicion" << endl;
 	cin >> choice;
+
+	enter(num, den);
+	Fraction second(num, den);
 
 	if (choice == 1)
 	{
@@ -47,12 +46,16 @@ int main()
 	}
 	else if (choice == 3)
 	{
+		Fraction answer = first.multiplication(second);
 
+		printAnswer(answer);
 	}
+	else if (choice == 4)
+	{
+		Fraction answer = first.division(second);
 
-
-
-
+		printAnswer(answer);
+	}
 
 	return 0;
 }
