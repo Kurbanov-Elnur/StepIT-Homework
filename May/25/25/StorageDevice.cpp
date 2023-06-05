@@ -1,61 +1,61 @@
 #include "StorageDevice.h"
 
 
-storageDevice :: storageDevice(string make, string model, uint16_t readingSpeed, uint16_t writeSpeed
-		, uint16_t powerConsumption, uint16_t weight, uint16_t capacity)
+storageDevice :: storageDevice(string& _make, string& _model, uint16_t& _readingSpeed, uint16_t& _writeSpeed
+	, uint16_t& _powerConsumption, uint16_t& _weight, uint16_t& _capacity)
 {
-	this->make = make;
-	this->model = model;	
-	*this->readingSpeed = readingSpeed;
-	*this->writeSpeed = writeSpeed;
-	*this->powerConsumption = powerConsumption;
-	*this->weight = weight;
-	*this->capacity = capacity;
+	this->make = _make;
+	this->model = _model;	
+	*this->readingSpeed = _readingSpeed;
+	*this->writeSpeed = _writeSpeed;
+	*this->powerConsumption = _powerConsumption;
+	*this->weight = _weight;
+	*this->capacity = _capacity;
 }
 
-string storageDevice :: getMake()
+string storageDevice :: getMake() const
 {
-	return make;
+	return this->make;
 }
 
-string storageDevice :: getModel()
+string storageDevice :: getModel() const
 {
-	return model;
+	return this->model;
 }
 
-uint16_t storageDevice :: getReadingSpeed()
+uint16_t storageDevice :: getReadingSpeed() const
 {
-	return *readingSpeed;
+	return *this->readingSpeed;
 }
 
-uint16_t storageDevice :: getWriteSpeed()
+uint16_t storageDevice :: getWriteSpeed() const
 {
-	return *writeSpeed;
+	return *this->writeSpeed;
 }
 
-uint16_t storageDevice :: getPowerConsuption()
+uint16_t storageDevice :: getPowerConsuption() const
 {
-	return *powerConsumption;
+	return *this->powerConsumption;
 }
 
-uint16_t storageDevice :: getWeight()
+uint16_t storageDevice :: getWeight() const
 {
-	return *weight;
+	return *this->weight;
 }
 
-uint16_t storageDevice :: getCapacity()
+uint16_t storageDevice :: getCapacity() const
 {
-	return *capacity;
+	return *this->capacity;
 }
 
 void storageDevice :: printDataStorageDevice() const
 {
 	cout
-		<< "Storage device make: " << make << endl
-		<< "Storage device model: " << model << endl
-		<< "Storage device reading speed: " << *readingSpeed << endl
-		<< "Storage device write speed: " << *writeSpeed << endl
-		<< "Storage device power consuption: " << *powerConsumption << endl
-		<< "Storage device weight: " << *weight << endl
-		<< "Storage device capacity: " << *capacity << endl;
+		<< "Storage device make: " << this->make << endl
+		<< "Storage device model: " << this->model << endl
+		<< "Storage device reading speed: " << *this->readingSpeed << endl
+		<< "Storage device write speed: " << *this->writeSpeed << endl
+		<< "Storage device power consuption: " << *this->powerConsumption << endl
+		<< "Storage device weight: " << *this->weight << endl
+		<< "Storage device capacity: " << *this->capacity << endl;
 }

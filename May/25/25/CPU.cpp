@@ -1,45 +1,45 @@
 #include "CPU.h"
 
-CPU :: CPU(string make, string model, string frequency, string performance, string socket)
+CPU :: CPU (string& _make, string& _model, uint16_t& _frequency, string& _performance, string& _socket)
 {
-	this->make = make;
-	this->model = model;
-	this->frequency = frequency;
-	this->performance = performance;
-	this->socket = socket;
+	this->make = _make;
+	this->model = _model;
+	*this->frequency = _frequency;
+	this->performance = _performance;
+	this->socket = _socket;
 }
 
-string CPU :: getMake()
+string CPU :: getMake() const
 {
-	return make;
+	return this->make;
 }
 
-string CPU :: getModel()
+string CPU :: getModel() const
 {
-	return model;
+	return this->model;
 }
 
-string CPU :: getFrequency()
+uint16_t CPU :: getFrequency() const
 {
-	return frequency;
+	return *this->frequency;
 }
 
-string CPU :: getPerformance()
+string CPU :: getPerformance() const
 {
-	return performance;
+	return this->performance;
 }
 
-string CPU :: getSocket()
+string CPU :: getSocket() const
 {
-	return socket;
+	return this->socket;
 }
 
 void CPU :: printDataCPU() const
 {
 	cout
-		<< "CPU make: " << make << endl
-		<< "CPU model: " << model << endl
-		<< "CPU frequency: " << frequency << endl
-		<< "CPU performance: " << performance << endl
-		<< "CPU socket: " << socket << endl;
+		<< "CPU make: " << this->make << endl
+		<< "CPU model: " << this->model << endl
+		<< "CPU frequency: " << *this->frequency << endl
+		<< "CPU performance: " << this->performance << endl
+		<< "CPU socket: " << this->socket << endl;
 }

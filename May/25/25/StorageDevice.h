@@ -1,5 +1,6 @@
-#pragma once
-#include "Computer.h"
+#include <string>
+#include <iostream>
+using namespace std;
 
 class storageDevice
 {
@@ -12,16 +13,16 @@ private:
 	uint16_t* weight = new uint16_t{};
 	uint16_t* capacity = new uint16_t{};
 public:
-	storageDevice(string make, string model, uint16_t readingSpeed, uint16_t writeSpeed
-		, uint16_t powerConsumption, uint16_t weight, uint16_t capacity);
+	storageDevice(string& _make, string& _model, uint16_t& _readingSpeed, uint16_t& _writeSpeed
+		, uint16_t& _powerConsumption, uint16_t& _weight, uint16_t& _capacity);
 
-	string getMake();
-	string getModel();
-	uint16_t getReadingSpeed();
-	uint16_t getWriteSpeed();
-	uint16_t getPowerConsuption();
-	uint16_t getWeight();
-	uint16_t getCapacity();
+	string getMake() const;
+	string getModel() const;
+	uint16_t getReadingSpeed() const;
+	uint16_t getWriteSpeed() const;
+	uint16_t getPowerConsuption() const;
+	uint16_t getWeight() const;
+	uint16_t getCapacity() const;
 
 	void printDataStorageDevice() const;
 };

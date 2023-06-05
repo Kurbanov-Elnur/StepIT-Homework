@@ -1,23 +1,23 @@
-#pragma once
-#include "Computer.h"
+#include <string>
+#include <iostream>
+using namespace std;
 
-struct CPU
+class CPU
 {
 private:
 	string make{};
 	string model{};
-	string frequency{};
+	uint16_t* frequency = new uint16_t{};
 	string performance{};
 	string socket{};
 public:
-	CPU() = default;
-	CPU(string make, string model, string frequency, string performance, string socket);
+	CPU(string& _make, string& _model, uint16_t& _frequency, string& _performance, string& _socket);
 
-	string getMake();
-	string getModel();
-	string getFrequency();
-	string getPerformance();
-	string getSocket();
+	string getMake() const;
+	string getModel() const;
+	uint16_t getFrequency() const;
+	string getPerformance() const;
+	string getSocket() const;
 
 	void printDataCPU() const;
 };

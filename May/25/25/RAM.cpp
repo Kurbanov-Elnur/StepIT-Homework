@@ -1,60 +1,60 @@
 #include "RAM.h"
 
-RAM :: RAM(string make, string model, string formFactor, uint16_t clockFrequency,
-	uint16_t throughput, uint16_t timings, uint16_t volume)
+RAM :: RAM(string& _make, string& _model, string& _formFactor, uint16_t& _clockFrequency,
+	uint16_t& _throughput, uint16_t& _timings, uint16_t& _volume)
 {
-	this->make = make;
-	this->model = model;
-	this->formFactor = formFactor;
-	*this->clockFrequency = clockFrequency;
-	*this->throughput = throughput;
-	*this->timings = timings;
-	*this->volume = volume;
+	this->make = _make;
+	this->model = _model;
+	this->formFactor = _formFactor;
+	*this->clockFrequency = _clockFrequency;
+	*this->throughput = _throughput;
+	*this->timings = _timings;
+	*this->volume = _volume;
 }
 
-string RAM :: getMake()
+string RAM :: getMake() const
 {
-	return make;
+	return this->make;
 }
 
-string RAM :: getModel()
+string RAM :: getModel() const
 {
-	return model;
+	return this->model;
 }
 
-string RAM :: getFormFactor()
+string RAM :: getFormFactor() const
 {
-	return formFactor;
+	return this->formFactor;
 }
 
-uint16_t RAM :: getClockFrequency()
+uint16_t RAM :: getClockFrequency() const
 {
-	return *clockFrequency;
+	return *this->clockFrequency;
 }
 
-uint16_t RAM :: getThroughput()
+uint16_t RAM :: getThroughput() const
 {
-	return *throughput;
+	return *this->throughput;
 }
 
-uint16_t RAM :: getTimings()
+uint16_t RAM :: getTimings() const
 {
-	return *timings;
+	return *this->timings;
 }
 
-uint16_t RAM :: getVolume()
+uint16_t RAM :: getVolume() const
 {
-	return *volume;
+	return *this->volume;
 }
 
-void RAM :: printDataRAM()
+void RAM :: printDataRAM() const
 {
 	cout
-		<< "RAM make: " << make << endl
-		<< "RAM model: " << model << endl
-		<< "RAM form factor: " << formFactor << endl
-		<< "RAM clock frequency: " << *clockFrequency << endl
-		<< "RAM throughput: " << *throughput << endl
-		<< "RAM timings: " << *timings << endl
+		<< "RAM make: " << this->make << endl
+		<< "RAM model: " << this->model << endl
+		<< "RAM form factor: " << this->formFactor << endl
+		<< "RAM clock frequency: " << *this->clockFrequency << endl
+		<< "RAM throughput: " << *this->throughput << endl
+		<< "RAM timings: " << *this->timings << endl
 		<< "RAM volume: " << *volume << endl;
 }

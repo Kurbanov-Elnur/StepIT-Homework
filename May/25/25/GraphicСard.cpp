@@ -1,60 +1,53 @@
 #include "GraphicCard.h"
 
-graphicCard :: graphicCard(string make, string model, string GPU, string CUDA,
-	uint16_t frequency, uint16_t powerConsumption, uint16_t transistors)
+graphicCard :: graphicCard(string& _make, string& _model, string& _CUDA,
+	uint16_t& _frequency, uint16_t& _powerConsumption, uint16_t& _transistors)
 {
-	this->make = make;
-	this->model = model;
-	this->GPU = GPU;
-	this->CUDA = CUDA;
-	*this->frequency = frequency;
-	*this->powerConsumption = powerConsumption;
-	*this->transistors = transistors;
+	this->make = _make;
+	this->model = _model;
+	this->CUDA = _CUDA;
+	*this->frequency = _frequency;
+	*this->powerConsumption = _powerConsumption;
+	*this->transistors = _transistors;
 }
 
-string graphicCard :: getMake()
+string graphicCard :: getMake() const
 {
-	return make;
+	return this->make;
 }
 
-string graphicCard :: getModel()
+string graphicCard :: getModel() const
 {
-	return model;
+	return this->model;
 }
 
-string graphicCard :: getGPU()
+string graphicCard :: getCUDA() const
 {
-	return GPU;
+	return this->CUDA;
 }
 
-string graphicCard :: getCUDA()
+uint16_t graphicCard :: getFrequency() const
 {
-	return CUDA;
+	return *this->frequency;
 }
 
-uint16_t graphicCard :: getFrequency()
+uint16_t graphicCard :: getPowerConsumption() const
 {
-	return *frequency;
+	return *this->powerConsumption;
 }
 
-uint16_t graphicCard :: getPowerConsumption()
+uint16_t graphicCard :: getTransistors() const
 {
-	return *powerConsumption;
-}
-
-uint16_t graphicCard :: getTransistors()
-{
-	return *transistors;
+	return *this->transistors;
 }
 
 void graphicCard :: pruitnDataGraphicCard() const
 {
 	cout
-		<< "Graphic Card make: " << make << endl
-		<< "Graphic Card model: " << model << endl
-		<< "Graphic Card GPU: " << GPU << endl
-		<< "Graphic Card CUDA: " << CUDA << endl
-		<< "Graphic Card frequency: " << *frequency << endl
-		<< "Graphic Card power consumption: " << *powerConsumption << endl
-		<< "Graphic Card transistors: " << *transistors << endl;
+		<< "Graphic Card make: " << this->make << endl
+		<< "Graphic Card model: " << this->model << endl
+		<< "Graphic Card CUDA: " << this->CUDA << endl
+		<< "Graphic Card frequency: " << *this->frequency << endl
+		<< "Graphic Card power consumption: " << *this->powerConsumption << endl
+		<< "Graphic Card transistors: " << *this->transistors << endl;
 }

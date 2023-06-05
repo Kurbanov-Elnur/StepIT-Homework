@@ -129,9 +129,13 @@
   <ItemGroup>
     <ClCompile Include="25.cpp" />
     <ClCompile Include="Computer.cpp" />
+    <ClCompile Include="Cooler.cpp" />
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="GraphicСard.cpp" />
-    <ClCompile Include="Motherboard.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Monitor.cpp" />
+    <ClCompile Include="MotherBoard.cpp" />
+    <ClCompile Include="mouse.cpp" />
     <ClCompile Include="PowerUnit.cpp" />
     <ClCompile Include="RAM.cpp" />
     <ClCompile Include="StorageDevice.cpp" />
@@ -139,9 +143,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Computer.h" />
+    <ClInclude Include="Cooler.h" />
     <ClInclude Include="CPU.h" />
     <ClInclude Include="GraphicCard.h" />
-    <ClInclude Include="Motherboard.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="Monitor.h" />
+    <ClInclude Include="MotherBoard.h" />
+    <ClInclude Include="mouse.h" />
     <ClInclude Include="PowerUnit.h" />
     <ClInclude Include="RAM.h" />
     <ClInclude Include="StorageDevice.h" />

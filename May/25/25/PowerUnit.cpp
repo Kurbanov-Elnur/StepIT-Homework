@@ -1,52 +1,52 @@
 #include "PowerUnit.h"
 
-powerUnit :: powerUnit(string make, string model, uint16_t power,
-	uint16_t tension, uint16_t current, uint16_t efficiency)
+powerUnit :: powerUnit(string& _make, string& _model, uint16_t& _power,
+	uint16_t& _tension, uint16_t& _current, uint16_t& _efficiency)
 {
-	this->make = make;
-	this->model = model;
-	*this->power = power;
-	*this->tension = tension;
-	*this->current = current;
-	*this->efficiency = efficiency;
+	this->make = _make;
+	this->model = _model;
+	*this->power = _power;
+	*this->tension = _tension;
+	*this->current = _current;
+	*this->efficiency = _efficiency;
 }
 
-string powerUnit :: getMake()
+string powerUnit :: getMake() const
 {
-	return make;
+	return this->make;
 }
 
-string powerUnit :: getModel()
+string powerUnit :: getModel() const
 {
-	return model;
+	return this->model;
 }
-uint16_t powerUnit :: getPower()
+uint16_t powerUnit :: getPower() const
 {
-	return *power;
-}
-
-uint16_t powerUnit :: getTension()
-{
-	return *tension;
+	return *this->power;
 }
 
-uint16_t powerUnit :: getCurrent()
+uint16_t powerUnit :: getTension() const
 {
-	return *current;
+	return *this->tension;
 }
 
-uint16_t powerUnit :: getEfficiency()
+uint16_t powerUnit :: getCurrent() const
 {
-	return *efficiency;
+	return *this->current;
 }
 
-void powerUnit :: printDataPowerUnit()
+uint16_t powerUnit :: getEfficiency() const
+{
+	return *this->efficiency;
+}
+
+void powerUnit :: printDataPowerUnit() const
 {
 	cout
-		<< "Power Unit make: " << make << endl
-		<< "Power Unit model: " << model << endl
-		<< "Power Unit power: " << *power << endl
-		<< "Power Unit tension: " << *tension << endl
-		<< "Power Unit current: " << *current << endl
-		<< "Power Unit efficiency: " << *efficiency << endl;
+		<< "Power Unit make: " << this->make << endl
+		<< "Power Unit model: " << this->model << endl
+		<< "Power Unit power: " << *this->power << endl
+		<< "Power Unit tension: " << *this->tension << endl
+		<< "Power Unit current: " << *this->current << endl
+		<< "Power Unit efficiency: " << *this->efficiency << endl;
 }
