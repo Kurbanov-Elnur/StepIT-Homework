@@ -19,8 +19,8 @@ public:
 	friend ostream& operator << (ostream& os, const Fraction answer)
 	{
 		cout
-			<< answer.numerator << endl
-			<< answer.denominator << endl;
+			<< "Numerator: " << answer.numerator << endl
+			<< "Denominator: " << answer.denominator << endl;
 		return os;
 	}
 
