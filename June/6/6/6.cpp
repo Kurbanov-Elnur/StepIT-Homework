@@ -7,7 +7,6 @@ template<typename T>
 class MyList {
 public:
 
-    int c = 3;
     struct Node {
         Node* previous{};
         T data;
@@ -59,7 +58,7 @@ private:
 
 int main()
 {
-    MyList<int> a{ 1, 2, 3 };
+    MyList<int> a{};
 
     cout << a;
 }
