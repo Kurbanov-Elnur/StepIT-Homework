@@ -158,8 +158,8 @@ private:
 
     void printInOrder(Node* node, ostream& os) const {
         if (node) {
-            printInOrder(node->left, os);
             os << node->data << " ";
+            printInOrder(node->left, os);
             printInOrder(node->right, os);
         }
     }
