@@ -18,6 +18,9 @@
     <ClCompile Include="16.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="newUser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="newUser.h">

@@ -21,38 +21,43 @@ namespace file
 	int length(char* obyekt)
 	{
 		int l{};
-		while (obyekt[l] != '\n')
-			l++;
+		if (obyekt[0] != '\0')
+		{
+			while (obyekt[l] != '\n')
+				l++;
+		}
 
 		return l;
 	}
 
-	void loadnames(User*& users, uint16_t usersCount)
+	void loadnames(User*& users, uint16_t& usersCount)
 	{
-		FILE* lists{};
-		fopen_s(&lists, "users.txt", "r");
+		FILE* _users{};
+		fopen_s(&_users, "users.txt", "r");
 
-		if (lists == nullptr) {
+		if (_users == nullptr) {
 			return;
 		}
 
-		while (!feof(lists)) {
-			users[usersCount].Spisok = new list{};
+		while (!feof(_users)) {
+			char data[5][50]{};
 
-			fgets(todolists[todolists->count].Spisok->name, 30, lists);
-			todolists[todolists->count].Spisok->name[length(todolists[todolists->count].Spisok->name)] = '\0';
-			fgets(todolists[todolists->count].Spisok->priority, 30, lists);
-			todolists[todolists->count].Spisok->priority[length(todolists[todolists->count].Spisok->priority)] = '\0';
-			fgets(todolists[todolists->count].Spisok->description, 1000, lists);
-			todolists[todolists->count].Spisok->description[length(todolists[todolists->count].Spisok->description)] = '\0';
-			fgets(todolists[todolists->count].Spisok->addDate, 8, lists);
-			todolists[todolists->count].Spisok->addDate[length(todolists[todolists->count].Spisok->addDate)] = '\0';
-			fgets(todolists[todolists->count].Spisok->executionTime, 8, lists);
-			todolists[todolists->count].Spisok->executionTime[length(todolists[todolists->count].Spisok->executionTime)] = '\0';
-			todolists->count++;
+			fgets(data[0], 50, _users);
+			data[0][length(data[0])] = '\0';
+			fgets(data[1], 50, _users);
+			data[1][length(data[1])] = '\0';
+			fgets(data[2], 50, _users);
+			data[2][length(data[2])] = '\0';
+			fgets(data[3], 50, _users);
+			data[3][length(data[3])] = '\0';
+			fgets(data[4], 50, _users);
+			data[4][length(data[4])] = '\0';
+			users[usersCount] = *new User(data[0], data[1], data[2], data[3], data[4]);
+
+			usersCount++;
 		}
-		todolists->count--;
+		usersCount--;
 
-		fclose(lists);
+		fclose(_users);
 	}
 }

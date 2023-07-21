@@ -148,17 +148,18 @@ int main()
 {
 	User* users = new User[100]{};
 	uint16_t usersCount{};
+	file::loadnames(users, usersCount);
 	int x{},  y{};
 
 	while (true)
 	{
 		std::cout << "\t\t\t\t\t\tWelcome!" << std::endl;
-		std::cout << "\t\t\t\tLogin\t\t\t\t\tSign up" << std::endl;
+		std::cout << "\t\t\t\tSign up\t\t\t\t\tLogin" << std::endl;
 		
-		while (y != 1 or x < 32 or x > 36 and x < 72 or x > 78)
+		while (y != 1 or x < 32 or x > 38 and x < 72 or x > 76)
 			getClick(x, y);
 
-		if (x >= 32 and x <= 36)
+		if (x >= 32 and x <= 38)
 		{
 			bool regComplated = true;
 			while (regComplated)
