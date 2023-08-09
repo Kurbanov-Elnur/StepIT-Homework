@@ -25,9 +25,6 @@ void getClick(int& x, int& y)
 				clicked = true;
 			}
 		}
-		 if (inputRec.EventType == KEY_EVENT) {
-			std::cout << inputRec.Event.KeyEvent.wVirtualKeyCode << std::endl;
-		}
 		if (GetAsyncKeyState(VK_ESCAPE)) {
 			break;
 		}
@@ -139,7 +136,7 @@ bool login(User* users, uint16_t usersCount)
 				return true;
 		}
 		else
-			return false;
+			throw std::invalid_argument("Invalid Password or Email");
 	}
 }
 
