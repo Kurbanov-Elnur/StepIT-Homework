@@ -17,4 +17,4 @@
 //        newText += text[i];
 //}
 
-//Console.WriteLine(newText);
+//Console.WriteLine("Corrected text: " + newText);
