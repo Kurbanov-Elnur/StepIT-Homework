@@ -16,7 +16,7 @@
 //{
 //    for (int j = 0; j < 5; j++)
 //    {
-//        Console.Write(arr[i,j] + "\t");
+//        Console.Write(arr[i, j] + "\t");
 //        if (arr[i, j] < arr[inStart1, inStart2])
 //        {
 //            inStart1 = i;
@@ -32,11 +32,11 @@
 //    Console.WriteLine();
 //}
 
-//if(inStart1 >= inEnd1)
+//if (inStart1 >= inEnd1)
 //{
-//    if(inStart1 == inEnd1)
+//    if (inStart1 == inEnd1)
 //    {
-//        if(inStart2 > inEnd2)
+//        if (inStart2 > inEnd2)
 //        {
 //            int temp = inStart1;
 //            inStart1 = inEnd1;
@@ -53,7 +53,7 @@
 //        inEnd1 = temp;
 //        temp = inStart2;
 //        inStart2 = inEnd2;
-//        inEnd2 = temp;  
+//        inEnd2 = temp;
 //    }
 //}
 
@@ -61,21 +61,27 @@
 //{
 //    for (int j = 0; j < 5; j++)
 //    {
-//        if(i >= inStart1)
+//        if (i >= inStart1)
 //        {
 //            if (i == inStart1)
 //            {
 //                if (j >= inStart2)
+//                {
 //                    sum += arr[i, j];
+//                    Console.WriteLine(arr[i,j] + ' ');
+//                }
 //            }
 //            else
 //            {
-//                if(i <= inEnd1)
+//                if (i <= inEnd1)
 //                {
-//                    if(i == inEnd2)
+//                    if (i == inEnd2)
 //                    {
 //                        if (j <= inEnd2)
+//                        {
 //                            sum += arr[i, j];
+//                            Console.WriteLine(arr[i, j] + ' ');
+//                        }
 //                    }
 //                }
 //            }
