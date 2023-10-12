@@ -9,7 +9,6 @@ namespace _12
     {
         List<double> numbers = new();
         List<char> operators = new();
-        History history = new();
 
         public Calculator()
         {
@@ -68,38 +67,45 @@ namespace _12
 
         private void Addition_Click(object sender, EventArgs e)
         {
-            AddNumberAndOperator((Button)sender);
+            if (ResultBox.Text.Length != 0)
+                AddNumberAndOperator((Button)sender);
         }
 
         private void Subtraction_Click(object sender, EventArgs e)
         {
-            AddNumberAndOperator((Button)sender);
+            if (ResultBox.Text.Length != 0)
+                AddNumberAndOperator((Button)sender);
         }
 
         private void Multiplication_Click(object sender, EventArgs e)
         {
-            AddNumberAndOperator((Button)sender);
+            if (ResultBox.Text.Length != 0)
+                AddNumberAndOperator((Button)sender);
         }
 
         private void Division_Click(object sender, EventArgs e)
         {
-            AddNumberAndOperator((Button)sender);
+            if (ResultBox.Text.Length != 0)
+                AddNumberAndOperator((Button)sender);
         }
 
         private void Minus_Click(object sender, EventArgs e)
         {
-            if (ResultBox.Text[0] != '-')
-                ResultBox.Text = $"-{ResultBox.Text}";
-            else
-                ResultBox.Text = ResultBox.Text.TrimStart('-');
+            if (ResultBox.Text.Length != 0)
+            {
+                if (ResultBox.Text[0] != '-')
+                    ResultBox.Text = $"-{ResultBox.Text}";
+                else
+                    ResultBox.Text = ResultBox.Text.TrimStart('-');
+            }
         }
 
         private void Point_Click(object sender, EventArgs e)
         {
-            if(ResultBox.Text.Length > 0 && (int)ResultBox.Text[ResultBox.Text.Length - 1] >= 48
+            if (ResultBox.Text.Length > 0 && (int)ResultBox.Text[ResultBox.Text.Length - 1] >= 48
               && (int)ResultBox.Text[ResultBox.Text.Length - 1] <= 57)
             {
-                if(!ResultBox.Text.Contains('.'))
+                if (!ResultBox.Text.Contains('.'))
                     ResultBox.Text += '.';
             }
         }
