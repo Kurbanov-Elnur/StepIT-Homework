@@ -121,6 +121,14 @@ namespace _12
                 }
                 catch (Exception ex) { }
 
+                string a = "";
+                a += numbers[0];
+                for (int i = 0; i < operators.Count; i++)
+                {
+                    a += $"{operators[i]}{numbers[i + 1]}";
+                }
+
+
                 if (numbers.Count == operators.Count)
                     operators.RemoveAt(operators.Count - 1);
 
@@ -167,8 +175,9 @@ namespace _12
                         }
                     }
                 }
+                a += $" = {numbers[0]}";
 
-                ResultBox.Text = numbers[0].ToString();
+                ResultBox.Text = a;
                 numbers.Clear();
                 operators.Clear();
             }

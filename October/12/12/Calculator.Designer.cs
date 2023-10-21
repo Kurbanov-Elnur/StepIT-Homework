@@ -72,7 +72,7 @@
             ResultBox.BackColor = Color.Silver;
             ResultBox.BorderStyle = BorderStyle.None;
             ResultBox.Dock = DockStyle.Fill;
-            ResultBox.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
+            ResultBox.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
             ResultBox.Location = new Point(0, 0);
             ResultBox.Multiline = true;
             ResultBox.Name = "ResultBox";
