@@ -48,23 +48,25 @@
                     Content="Welcome!">
                 </Label>
 
-                <Label Grid.Row="1" Grid.Column="0"
-                       FontSize="20"
-                       Margin="20, 0, 45, 0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top"
-                       Content="Email:">
+                <Label 
+                    Grid.Row="1" 
+                    Grid.Column="0"
+                    FontSize="20"
+                    Margin="20, 0, 45, 0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Content="Email:">
                 </Label>
 
                 <TextBox 
+                    x:Name="EmailTxt"
                     Grid.Row="1"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Margin="0, 0, 50, 0"
                     FontSize="25"
                     HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top"
-                    >
+                    VerticalAlignment="Top">
                 </TextBox>
 
                 <Label 
@@ -78,6 +80,7 @@
                 </Label>
 
                 <TextBox 
+                    x:Name="PasswordTxt"
                     Grid.Row="2"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -96,6 +99,7 @@
                 </Button>
                 
                 <Button 
+                    Click="SignInBtn"
                     Grid.Row="4"
                     Grid.Column="1"
                     Margin="30, 10, 30, 5">
@@ -106,7 +110,7 @@
                     Grid.Row="5"
                     Grid.Column="1"
                     Margin="50, 10, 50, 5"
-                    Click="Button_Click">
+                    Click="SignUpBtn">
                     Sign up
                 </Button>
             </Grid>

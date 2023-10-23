@@ -27,11 +27,12 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.7*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
@@ -46,8 +47,7 @@
                 </Label>
 
                 <TextBox
-                    x:Name="name"
-                    Text="{Binding UserToAdd.Name}"
+                    x:Name="NameTxt"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -66,6 +66,7 @@
                 </Label>
 
                 <TextBox 
+                    x:Name="SurnameTxt"
                     Grid.Row="1"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -86,6 +87,7 @@
                 </Label>
 
                 <TextBox 
+                    x:Name="EmailTxt"
                     Grid.Row="2"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -95,11 +97,32 @@
                     VerticalAlignment="Center">
                 </TextBox>
 
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    FontSize="20"
+                    Margin="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Password:">
+                </Label>
+
+                <TextBox
+                    x:Name="PasswordTxt"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="0, 0, 50, 0"
+                    FontSize="25"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+                </TextBox>
+
                 <Button 
-                Click="Button_Click"
-                Grid.Row="5"
-                Grid.Column="1"
-                Margin="50, 10, 50, 5">
+                    Click="AddUserBtn"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Margin="50, 10, 50, 5">
                     Sign up
                 </Button>
             </Grid>

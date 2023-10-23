@@ -18,18 +18,30 @@ namespace _12_Login.Views
 { 
     public partial class SignUp : Page
     {
-        public User UserToAdd { get; set; } = new User();
-        
-
         public SignUp()
         {
             InitializeComponent();
-            DataContext = new User();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddUserBtn(object sender, RoutedEventArgs e)
         {
-            name.Text = UserToAdd.Name;
+            User UserToAdd = new();
+
+            UserToAdd.Name = NameTxt.Text;
+            UserToAdd.Surname = SurnameTxt.Text;
+            UserToAdd.Email = EmailTxt.Text;
+            UserToAdd.Password = PasswordTxt.Text;
+
+            foreach (var item in SignIn.Users)
+            {
+                if(item.Email == UserToAdd.Email)
+                {
+                    MessageBox.Show("This gmail is already registered");
+                    return;
+                }
+            }
+
+            MainView.Frame.Content = new CheckEmail(UserToAdd);
         }
     }
 }

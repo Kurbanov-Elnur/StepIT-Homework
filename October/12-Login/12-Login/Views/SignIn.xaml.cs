@@ -18,16 +18,30 @@ namespace _12_Login.Views
 {
     public partial class SignIn : Page
     {
-        private List<User> Users = new();
+        public static List<User> Users = new();
 
         public SignIn()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SignUpBtn(object sender, RoutedEventArgs e)
         {
             MainView.Frame.Content = new SignUp();
+        }
+
+        private void SignInBtn(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in Users)
+            {
+                if (item.Email == EmailTxt.Text && item.Password == PasswordTxt.Text)
+                    MessageBox.Show($"Welcome {item.Name}!");
+            }
+        }
+
+        public static void AddUser(User _user)
+        {
+            Users.Add(_user);
         }
     }
 }
