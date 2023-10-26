@@ -20,12 +20,15 @@ namespace _12_Login.Views
 {
     public partial class CheckEmail : Page
     {
-        private int Code { get; set; }
+        private static int Code { get; set; }
         private User UserToAdd { get; set; }
 
-        public CheckEmail(User _user)
+        private Page returnPage;
+
+        public CheckEmail(User _user, Page _returnPage)
         {
             InitializeComponent();
+            returnPage = _returnPage;
             UserToAdd = _user;
             SendEmail(_user.Email);
         }
@@ -46,7 +49,7 @@ namespace _12_Login.Views
             }
         }
 
-        void SendEmail(string sendEmail)
+        public static void SendEmail(string sendEmail)
         {
             MailAddress from = new MailAddress("elnurloginapp@gmail.com", "Login Programm");
             MailAddress to = new MailAddress(sendEmail, "User");
@@ -79,8 +82,8 @@ namespace _12_Login.Views
                 MessageBox.Show("You have been successfully added");
                 SignIn.AddUser(UserToAdd);
             }
-
-            MainView.Frame.Content = new SignIn();
+            
+            MainView.Frame.Content = returnPage;
         }
     }
 }

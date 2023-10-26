@@ -19,6 +19,7 @@ namespace _12_Login.Views
     public partial class SignIn : Page
     {
         public static List<User> Users = new();
+        private string password;
 
         public SignIn()
         {
@@ -42,6 +43,24 @@ namespace _12_Login.Views
         public static void AddUser(User _user)
         {
             Users.Add(_user);
+        }
+
+        private void ForgotBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //MainView.Frame.Content = new CheckEmail(EmailTxt.Text, new SignUp());
+        }
+
+        private void passwordTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            password += e.Text;
+            PasswordTxt.Text = new string('*', password.Length);
+
+            e.Handled = true;
+        }
+
+        private void ShowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PasswordTxt.Text = password;
         }
     }
 }

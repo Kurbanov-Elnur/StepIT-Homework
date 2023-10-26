@@ -18,6 +18,8 @@ namespace _12_Login.Views
 { 
     public partial class SignUp : Page
     {
+        private string password;
+
         public SignUp()
         {
             InitializeComponent();
@@ -41,7 +43,20 @@ namespace _12_Login.Views
                 }
             }
 
-            MainView.Frame.Content = new CheckEmail(UserToAdd);
+            MainView.Frame.Content = new CheckEmail(UserToAdd, new SignUp());
+        }
+
+        private void passwordTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            password += e.Text;
+            PasswordTxt.Text = new string('*', password.Length);
+
+            e.Handled = true;
+        }
+
+        private void ShowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PasswordTxt.Text = password;
         }
     }
 }
