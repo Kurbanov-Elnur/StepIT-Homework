@@ -13,10 +13,10 @@ interface IComputerBuilder
 {
     public Computer Computer { get; set; }
 
-    public void SetBrandAndModel(string brand, string model);
-    public void SetMotherboard(string model, string manufacturer, string socketType, int maxMemorySlots, int usbPorts);
-    public void SetProcessor(string model, string manufacturer, int cores, double clockSpeedGHz, string architecture);
-    public void SetGraphicsCard(string model, string manufacturer, int vramGB, int cudaCores);
-    public void SetRAM(string model, string manufacturer, int capacityGB, int speedMHz, string type);
+    public void SetHardwareInfo(HardwareInfo hardwareInfo);
+    public void SetGraphicsCard(HardwareInfo hardwareInfo, int vramGB, int cudaCores, string gddrType);
+    public void SetMotherboard(HardwareInfo hardwareInfo, string socketType, int maxMemorySlots, int usbPorts, bool supportsRAID);
+    public void SetProcessor(HardwareInfo hardwareInfo, int cores, double clockSpeedGHz, string architecture, bool hyperthreading);
+    public void SetRAM(HardwareInfo hardwareInfo, int capacityGB, int speedMHz, string type, int modules);
     public Computer GetComputer();
 }

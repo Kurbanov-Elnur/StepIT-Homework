@@ -9,34 +9,40 @@ namespace _26.Entities;
 
 class Computer
 {
-    public string Brand { get; set; } 
-    public string Model { get; set; } 
+    public HardwareInfo HardwareInfo { get; set; }
     public string Type { get; set; } 
     public Motherboard Motherboard { get; set; } 
     public Processor Processor { get; set; }
-    public GraphicsCard GraphicsCard { get; set; }
-    public RAM RAM { get; set; }
+    public List<GraphicsCard> GraphicsCards { get; set; }
+    public List<RAM> RAMs { get; set; }
 
-    public Computer(string brand, string model, string type, Motherboard motherboard, Processor processor, GraphicsCard graphicsCard, RAM rAM)
+    public Computer(HardwareInfo hardwareInfo, string type, Motherboard motherboard, Processor processor, List<GraphicsCard> graphicsCard, List<RAM> rAM)
     {
-        Brand = brand;
-        Model = model;
+        HardwareInfo = hardwareInfo.Clone() as HardwareInfo;
         Type = type;
         Motherboard = motherboard;
         Processor = processor;
-        GraphicsCard = graphicsCard;
-        RAM = rAM;
+        GraphicsCards =graphicsCard;
+        RAMs = rAM;
     }
 
-    public Computer() { }
+    public Computer()
+    {
+        GraphicsCards = new();
+        RAMs = new();
+    }
 
     public override string ToString()
     {
-        return $"Computer: {Brand} {Model} \n" +
-            $"Computer type: {Type} \n" +
-            $"Motherboard data: \n{Motherboard}" +
-            $"Processor data: \n{Processor}" +
-            $"GraphicsCard data: \n{GraphicsCard}" +
-            $"RAM data: \n{RAM}";
+        string graphicsCardsInfo = string.Join("\n", GraphicsCards.Select(card => card.ToString()));
+
+        string ramInfo = string.Join("\n", RAMs.Select(ram => ram.ToString()));
+
+        return $"Computer: {HardwareInfo} \n" +
+               $"Computer type: {Type} \n" +
+               $"{Motherboard}" +
+               $"{Processor}" +
+               $"{graphicsCardsInfo}" +
+               $"{ramInfo}";
     }
 }

@@ -18,31 +18,30 @@ class OfficeComputerBuilder : IComputerBuilder
         Computer = new();
     }
 
-    public void SetBrandAndModel(string brand, string model)
+    public void SetHardwareInfo(HardwareInfo hardwareInfo)
     {
-        Computer.Brand = brand;
-        Computer.Model = model;
+        Computer.HardwareInfo = hardwareInfo.Clone() as HardwareInfo;
         Computer.Type = "Office computer";
     }
 
-    public void SetGraphicsCard(string model, string manufacturer, int vramGB, int cudaCores)
+    public void SetGraphicsCard(HardwareInfo hardwareInfo, int vramGB, int cudaCores, string gddrType)
     {
-        Computer.GraphicsCard = new GraphicsCard(model, manufacturer, vramGB, cudaCores);
+        Computer.GraphicsCards.Add(new GraphicsCard(hardwareInfo, vramGB, cudaCores, gddrType));
     }
 
-    public void SetMotherboard(string model, string manufacturer, string socketType, int maxMemorySlots, int usbPorts)
+    public void SetMotherboard(HardwareInfo hardwareInfo, string socketType, int maxMemorySlots, int usbPorts, bool supportsRAID)
     {
-        Computer.Motherboard = new Motherboard(model, manufacturer, socketType, maxMemorySlots, usbPorts);
+        Computer.Motherboard = new Motherboard(hardwareInfo, socketType, maxMemorySlots, usbPorts, supportsRAID);
     }
 
-    public void SetProcessor(string model, string manufacturer, int cores, double clockSpeedGHz, string architecture)
+    public void SetProcessor(HardwareInfo hardwareInfo, int cores, double clockSpeedGHz, string architecture, bool hyperthreading)
     {
-        Computer.Processor = new Processor(model, manufacturer, cores, clockSpeedGHz, architecture);
+        Computer.Processor = new Processor(hardwareInfo, cores, clockSpeedGHz, architecture, hyperthreading);
     }
 
-    public void SetRAM(string model, string manufacturer, int capacityGB, int speedMHz, string type)
+    public void SetRAM(HardwareInfo hardwareInfo, int capacityGB, int speedMHz, string type, int modules)
     {
-        Computer.RAM = new RAM(model, manufacturer, capacityGB, speedMHz, type);
+        Computer.RAMs.Add(new RAM(hardwareInfo, capacityGB, speedMHz, type, modules));
     }
 
     public Computer GetComputer()
