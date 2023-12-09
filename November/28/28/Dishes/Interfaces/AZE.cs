@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _28.Types;
+namespace _28.Dishes.Interfaces;
 
-interface IMainCourse
+interface AZE
 {
-    public void Cook();
-    public void Service();
-}
+
+}    
