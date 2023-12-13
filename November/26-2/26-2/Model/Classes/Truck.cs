@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace _26_2.Model.Classes;
 
-class Truck : IAutomobile
+class Truck(string make, string model, string engine, DateTime yearOfRelease, int payloadCapacity, bool extendedCab) : IAutomobile
 {
-    public string Make { get; set; }
-    public string Model { get; set; }
-    public string Engine { get; set; }
-    public DateTime YearOfRelease { get; set; }
-    public int PayloadCapacity { get; set; }
-    public bool ExtendedCab { get; set; }
+    public string Make { get; set; } = make;
+    public string Model { get; set; } = model;
+    public string Engine { get; set; } = engine;
+    public DateTime YearOfRelease { get; set; } = yearOfRelease;
+    public int PayloadCapacity { get; set; } = payloadCapacity;
+    public bool ExtendedCab { get; set; } = extendedCab;
 }
