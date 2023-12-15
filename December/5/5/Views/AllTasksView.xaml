@@ -15,13 +15,8 @@
             HorizontalAlignment="Center"
             Width="380"
             Height="680"
-            Background="#101025"
-            CornerRadius="30">
+            Background="#101025">
 
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" Color="Gray"/>
-            </Border.Effect>
-            
 
             <ScrollViewer
                 Margin="0 -110 0 0"
