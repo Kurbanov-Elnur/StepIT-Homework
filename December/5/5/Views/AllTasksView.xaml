@@ -4,19 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_5.Views"
-             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="400" Background="Transparent" >
+             d:DesignHeight="700" d:DesignWidth="400">
     <Grid
-        Background="Transparent">
+        Background="#101025">
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
         <Border
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Width="380"
             Height="680"
-            Background="#101025">
-
+            Background="Transparent">
 
             <ScrollViewer
                 Margin="0 -110 0 0"
@@ -24,24 +27,55 @@
                 Grid.Row="1"
                 VerticalScrollBarVisibility="Hidden">
 
-                <ItemsControl ItemsSource="{Binding Cards}">
+                <ItemsControl ItemsSource="{Binding Tasks}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
+                            <Border
+                                Background="#181832"
+                                Width="350"
+                                Height="50">
 
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock
+                                        Text="{Binding Description}"
+                                        FontSize="20"
+                                        Foreground="White">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Text="{Binding DeadLine}"
+                                        FontSize="20"
+                                        Foreground="White">
+                                    </TextBlock>
+
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Text="{Binding  IsCompleted}"
+                                        FontSize="20"
+                                        Foreground="White">
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
         </Border>
 
-        <Border
-            Background="#181832"
-            Width="350"
-            Height="50">
-
-            <Grid>
-                
-            </Grid>
-        </Border>
+        <Button
+            Content="Add task"
+            Height="50"
+            Width="200"
+            Grid.Row="1"
+            Command="{Binding AddCommand}">
+            
+        </Button>
     </Grid>
 </UserControl>
