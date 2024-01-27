@@ -1,6 +1,0 @@
-{
-  "ConnectionStrings": {
-    "Default": "Data Source=localhost;Initial Catalog=Academy;Integrated Security=True;Trust Server Certificate = True";
-  }
-}
-dotnet ef dbcontext scaffold "Data Source=localhost;Initial Catalog=Academy;Integrated Security=True;Trust Server Certificate = True;" Microsoft.EntityframeworkCore.SqlServer
