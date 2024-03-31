@@ -109,6 +109,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock
+                                            HorizontalAlignment="Left"
                                             Text="{Binding Name}"
                                             Foreground="White"
                                             VerticalAlignment="Bottom"
