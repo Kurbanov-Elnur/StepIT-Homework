@@ -9,5 +9,5 @@ namespace _23.Services.Interfaces;
 
 interface IDBEntryService
 {
-    public List<Movie> ToMovies(Docs[] movies);
+    public Movie toMovie(Docs movie);
 }

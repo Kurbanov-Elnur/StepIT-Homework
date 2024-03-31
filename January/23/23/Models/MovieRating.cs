@@ -8,19 +8,15 @@ using System.Threading.Tasks;
 
 namespace _23.Models;
 
-class MovieRating
+public class MovieRating
 {
-    [Key]
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
-    [Required]
-    public double KP { get; set; }
+    public double? KP { get; set; }
 
-    [Required]
-    public double IMDB { get; set; }
+    public double? IMDB { get; set; }
 
-    [Required]
-    public double TMDB { get; set; }
+    public double? TMDB { get; set; }
 
     public ICollection<Movie> Movies { get; set; }
 }
