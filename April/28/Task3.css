@@ -1,0 +1,11 @@
+.DocName{
+    text-align: center;
+}
+
+p {
+    white-space: pre-line;
+}
+
+.dotted-underline {
+    text-decoration: underline dotted;
+}
