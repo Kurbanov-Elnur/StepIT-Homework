@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.IO;
 using System.Net.Sockets;
 using System.Net;
 
@@ -11,17 +12,14 @@ try
     {
         IPEndPoint endPoint = new IPEndPoint(ipAddress, port);
 
-        List<byte[]> receivedBlocks = new List<byte[]>(); 
+        List<byte[]> receivedBlocks = new List<byte[]>();
 
         while (true)
         {
             byte[] receivedBytes = listener.Receive(ref endPoint);
-            string json = System.Text.Encoding.UTF8.GetString(receivedBytes);
+            receivedBlocks.Add(receivedBytes);
 
-            byte[] block = JsonConvert.DeserializeObject<byte[]>(json);
-            receivedBlocks.Add(block);
-
-            if (block.Length < 1024)
+            if (receivedBytes.Length < 1024)
                 break;
         }
 
