@@ -1,0 +1,19 @@
+.list {
+    background-color: rgb(237, 158, 174);
+    padding: 20px;
+    color: white;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    list-style-position: inside;
+}
+
+.list-item {
+    background-color: rgb(198, 99, 118);
+    padding: 1%;
+    margin: 3%;
+}
+
+.text {
+    background-color: rgb(158, 53, 74);
+    padding: 1%;
+}
