@@ -1,0 +1,36 @@
+.menu{
+    font-size: 30px;
+    list-style-type: none;
+    width: 200px;
+}
+
+.menu-item{
+    padding: 10px;
+    background-color: lightgray;
+    padding-left: 10px;
+}
+
+.menu-item-text{
+    padding: 10px;
+    color: white;
+}
+
+.menu-item:hover{
+    background-color: gray;
+}
+
+#yellow-item {
+    color: #E6B800
+}
+
+#red-item {
+    color: #CC0000
+}
+
+#blue-item {
+    color: #00BFFF
+} 
+
+#green-item {
+    color: #008000
+}
