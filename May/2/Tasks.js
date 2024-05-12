@@ -2,9 +2,9 @@ function IsNumber(value) {
     return typeof value === 'number' && !isNaN(value);
 }
 
-function IsCorrectTime(hours, minutes = 0, seconds = 0){
-    if(IsNumber(hours) && IsNumber(minutes) && IsNumber(seconds)){
-        if(hours < 0 || minutes < 0 || seconds < 0){
+function IsCorrectTime(hours, minutes = 0, seconds = 0) {
+    if (IsNumber(hours) && IsNumber(minutes) && IsNumber(seconds)) {
+        if (hours < 0 || minutes < 0 || seconds < 0) {
             return false;
         }
         return true;
@@ -15,7 +15,7 @@ function IsCorrectTime(hours, minutes = 0, seconds = 0){
 //Task1
 
 function CompareNumbers(num1, num2) {
-    if(IsNumber(num1) && IsNumber(num2)){
+    if (IsNumber(num1) && IsNumber(num2)) {
         if (num1 < num2) {
             return -1;
         } else if (num1 > num2) {
@@ -30,7 +30,7 @@ function CompareNumbers(num1, num2) {
 //Task2
 
 function Factorial(num) {
-    if(IsNumber(num)){
+    if (IsNumber(num)) {
         if (num === 0 || num === 1) {
             return 1;
         } else {
@@ -43,7 +43,7 @@ function Factorial(num) {
 //Task3
 
 function CombineDigits(num1, num2, num3) {
-    if(IsNumber(num1) && IsNumber(num2) && IsNumber(num3)){
+    if (IsNumber(num1) && IsNumber(num2) && IsNumber(num3)) {
         return parseInt(num1.toString() + num2.toString() + num3.toString());
     }
     throw new Error("Invalid values!");
@@ -52,7 +52,7 @@ function CombineDigits(num1, num2, num3) {
 //Task4
 
 function CalculateArea(length, width) {
-    if(IsNumber(length) && IsNumber(width)){
+    if (IsNumber(length) && IsNumber(width)) {
         if (width === undefined) {
             return length * length;
         } else {
@@ -65,7 +65,7 @@ function CalculateArea(length, width) {
 //Task5
 
 function IsPerfectNumber(num) {
-    if(IsNumber(num) && num < 0){
+    if (IsNumber(num) && num < 0) {
         let sum = 0;
         for (let i = 1; i < num; i++) {
             if (num % i === 0) {
@@ -80,8 +80,8 @@ function IsPerfectNumber(num) {
 //Task6
 
 function FunctionindPerfectNumbers(min, max) {
-    if(IsNumber(min) && IsNumber(max)){
-        if(min > max){
+    if (IsNumber(min) && IsNumber(max)) {
+        if (min > max) {
             let buffer = min;
             min = max;
             max = buffer;
@@ -101,11 +101,11 @@ function FunctionindPerfectNumbers(min, max) {
 //Task7
 
 function FormatTime(hours, minutes = 0, seconds = 0) {
-    if(IsCorrectTime(hours, minutes, seconds)){
-        if (seconds > 59){
+    if (IsCorrectTime(hours, minutes, seconds)) {
+        if (seconds > 59) {
             minutes += Math.floor(seconds / 60);
             seconds %= 60;
-            if(minutes > 59){
+            if (minutes > 59) {
                 hours += Math.floor(minutes / 60);
                 minutes %= 60;
             }
@@ -114,7 +114,7 @@ function FormatTime(hours, minutes = 0, seconds = 0) {
         let formattedMinutes = String(minutes).padStart(2, '0');
         let formattedSeconds = String(seconds).padStart(2, '0');
 
-        return`${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
     }
     throw new Error("Invalid values");
 }
@@ -122,12 +122,12 @@ function FormatTime(hours, minutes = 0, seconds = 0) {
 //Task8
 
 function TimeToSeconds(hours, minutes = 0, seconds = 0) {
-    if(IsCorrectTime(hours, minutes, seconds)){
+    if (IsCorrectTime(hours, minutes, seconds)) {
         let totalSeconds = 0;
         totalSeconds += hours * 3600;
         totalSeconds += minutes * 60;
         totalSeconds += seconds;
-    
+
         return totalSeconds;
     }
     throw new Error("Invalid values");
@@ -136,16 +136,16 @@ function TimeToSeconds(hours, minutes = 0, seconds = 0) {
 //Task9
 
 function SecondsToTime(totalSeconds) {
-    if(IsNumber(totalSeconds) && totalSeconds > 0){
+    if (IsNumber(totalSeconds) && totalSeconds > 0) {
         let hours = Math.floor(totalSeconds / 3600);
         let minutes = Math.floor((totalSeconds % 3600) / 60);
         let seconds = totalSeconds % 60;
-        
+
         let formattedHours = String(hours).padStart(2, '0');
         let formattedMinutes = String(minutes).padStart(2, '0');
         let formattedSeconds = String(seconds).padStart(2, '0');
-        
-        return`${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+
+        return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
     }
     throw new Error("Invalid value");
 }
