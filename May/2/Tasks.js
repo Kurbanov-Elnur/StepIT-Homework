@@ -150,6 +150,8 @@ function SecondsToTime(totalSeconds) {
     throw new Error("Invalid value");
 }
 
+console.log(SecondsToTime(3020));
+
 //Task10
 
 function DateDifference(hours1, minutes1, seconds1, hours2, minutes2, seconds2) {
