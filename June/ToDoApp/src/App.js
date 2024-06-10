@@ -1,9 +1,9 @@
 import './App.css';
-import {Test} from './test.jsx'
+import Login from '../src/HW/JSX/Login'
 
 function App() {
   return (
-    <Test></Test>
+    <Login></Login>
   );
 }
 
