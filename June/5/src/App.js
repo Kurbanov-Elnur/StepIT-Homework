@@ -56,14 +56,7 @@ const cities = [
 function App() {
   return (
     <div className="App">
-      <h1>Movie Schedule</h1>
-      <MovieSchedule movies={movies} />
-      
-      <h1>Blog Posts</h1>
       <BlogPosts posts={posts} />
-      
-      <h1>City Information</h1>
-      <CityInfo cities={cities} />
     </div>
   );
 }
