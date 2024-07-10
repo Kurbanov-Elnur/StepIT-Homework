@@ -14,12 +14,14 @@ public class MovieService : IMovieService
         _appDbContext = appDbContext;
     }
 
-    public async Task<List<Movie>> GetMoviesByNameAsync(string name)
+    public async Task<List<Movie>> GetMoviesByNameAsync(string name, int page = 1)
     {
         try
         {
             var movies = await _appDbContext.Movies
-                .Where(m => m.Title == name)
+                .Where(m => m.Title.Contains(name))
+                .Skip((page - 1) * 10)
+                .Take(10)
                 .ToListAsync();
 
             return movies;
