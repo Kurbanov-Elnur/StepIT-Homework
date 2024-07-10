@@ -35,7 +35,7 @@ public class MovieController : ControllerBase
     [HttpPost("AddMovie")]
     public async Task<IActionResult> AddMovieAsync([FromBody] Movie movie)
     {
-        if(await _movieService.AddMovieAsync(movie))
+        if(await _movieService.AddMovieAsync(movie.Title, movie.Director, movie.ReleaseDate, movie.Genre, movie.Rating))
         {
             return Ok();
         }

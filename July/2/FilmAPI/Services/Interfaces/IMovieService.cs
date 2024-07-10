@@ -6,5 +6,6 @@ namespace FilmAPI.Services.Interfaces;
 public interface IMovieService
 {
     public Task<List<Movie>> GetMoviesByNameAsync (string name);
-    public Task<bool> AddMovieAsync (Movie movie);
+    public Task<bool> AddMovieAsync (string title, string director,
+     DateTime releaseDate, string genre, double rating);
 }

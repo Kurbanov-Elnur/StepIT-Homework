@@ -30,11 +30,14 @@ public class MovieService : IMovieService
         }
     }
 
-    public async Task<bool> AddMovieAsync(Movie movie)
+    public async Task<bool> AddMovieAsync(string title, string director,
+     DateTime releaseDate, string genre, double rating)
     {
+        var newMovie = new Movie(title, director, releaseDate, genre, rating);
+
         try
         {
-            _appDbContext.Movies.Add(movie);
+            _appDbContext.Movies.Add(newMovie);
             await _appDbContext.SaveChangesAsync();
             return true;
         }
