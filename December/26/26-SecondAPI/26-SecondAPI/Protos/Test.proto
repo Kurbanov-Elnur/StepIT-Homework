@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "Homework_gRPC";
+
+service gRPC {
+  rpc GetUserName (PostName) returns (NameResponse);
+}
+
+message PostName {
+  string Name = 1;
+}
+
+message NameResponse {
+  string Name = 1;
+}

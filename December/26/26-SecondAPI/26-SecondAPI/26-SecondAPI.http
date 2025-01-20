@@ -1,0 +1,6 @@
+@_26_SecondAPI_HostAddress = http://localhost:5187
+
+GET {{_26_SecondAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,34 @@
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\appsettings.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\API Second.exe
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\API Second.deps.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\API Second.runtimeconfig.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\API Second.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\API Second.pdb
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.csproj.AssemblyReference.cache
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.AssemblyInfoInputs.cache
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.AssemblyInfo.cs
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.csproj.CoreCompileInputs.cache
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.sourcelink.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\staticwebassets\msbuild.API Second.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\staticwebassets\msbuild.build.API Second.props
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.API Second.props
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.API Second.props
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\scopedcss\bundle\API Second.styles.css
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.csproj.Up2Date
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\refint\API Second.dll
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.pdb
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\API Second.genruntimeconfig.cache
+C:\Users\Elnur\StepIT-Homework\December\17\API Second\API Second\obj\Debug\net8.0\ref\API Second.dll
