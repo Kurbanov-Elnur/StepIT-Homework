@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 7-hw-deployment
+  labels:
+    app: 7-hw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 7-hw
+  template:
+    metadata:
+      labels:
+        app: 7-hw
+    spec:
+      containers:
+        - name: 7-hw
+          image: 7-hw-image:latest
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
