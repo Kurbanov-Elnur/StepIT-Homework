@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\26-FirstAPI.props" />
-</Project>
