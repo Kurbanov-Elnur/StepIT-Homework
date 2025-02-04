@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: 7-hw
-          image: 7-hw-image:latest
+          image: docker.io/library/7-hw-image:latest
+          imagePullPolicy: Never  
           ports:
             - containerPort: 8080
             - containerPort: 8081
